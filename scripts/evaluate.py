@@ -45,14 +45,26 @@ async def main():
         "trials": [],
         "exclusions": [],
     }
+    Path("evaluation/results/latest.json").write_text(json.dumps(report, indent=2) + "\n")
     # Independent handwritten checks establish paired behavior before planner evaluation.
     for path in manifest["scenarios"]:
         for defective in [False, True]:
-            result = await invoke(
-                {"kind": "reference", "target_path": path, "defective": defective}
-            )
+            try:
+                result = await invoke(
+                    {"kind": "reference", "target_path": path, "defective": defective}
+                )
+            except Exception as exc:
+                report["reference_checks"].append(
+                    {"path": path, "defective": defective, "error": type(exc).__name__}
+                )
+                report["aborted"] = "reference_execution_error"
+                Path("evaluation/results/latest.json").write_text(
+                    json.dumps(report, indent=2) + "\n"
+                )
+                raise
             row = {"path": path, "defective": defective, **result}
             report["reference_checks"].append(row)
+            Path("evaluation/results/latest.json").write_text(json.dumps(report, indent=2) + "\n")
             if result["conforms"] == defective:
                 raise RuntimeError("reference ground truth failed: " + path)
     trials = [

@@ -134,7 +134,7 @@ def process_usage(root_pid: int) -> tuple[int, int]:
             for line in Path(f"/proc/{pid}/status").read_text().splitlines():
                 if line.startswith("VmRSS:"):
                     rss_kib += int(line.split()[1])
-        except FileNotFoundError:
+        except (FileNotFoundError, ProcessLookupError):
             continue
     return len(seen), rss_kib
 
