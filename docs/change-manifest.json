@@ -1,0 +1,224 @@
+{
+  "date": "2026-11-08",
+  "baseline": "0.2",
+  "application_code_changed": false,
+  "dependencies_installed": false,
+  "system_configuration_changed": false,
+  "moves": [
+    {
+      "from": "Docs/01 — Project Charter & Statement of Work 412d15a2a43c810ca3c7d8b7283780a9.md",
+      "to": "docs/foundations/01-project-charter.md",
+      "archive": "docs/archive/v0.1/01 — Project Charter & Statement of Work 412d15a2a43c810ca3c7d8b7283780a9.md",
+      "original_sha256": "4b41503eab2acbd36187e7b0216c3ed127ae273347122289624d050b3ed7a22e"
+    },
+    {
+      "from": "Docs/02 — Product Requirements Document (PRD) 412d15a2a43c81e3a6c2d9e576dea5c6.md",
+      "to": "docs/foundations/02-product-requirements.md",
+      "archive": "docs/archive/v0.1/02 — Product Requirements Document (PRD) 412d15a2a43c81e3a6c2d9e576dea5c6.md",
+      "original_sha256": "c2292fbd57b48c2574f41bfb8b41330ccd457a442795b4c8e175093ba48824f8"
+    },
+    {
+      "from": "Docs/03 — Software Requirements Specification (SRS) 412d15a2a43c81c2a32cf9b74548faac.md",
+      "to": "docs/foundations/03-software-requirements.md",
+      "archive": "docs/archive/v0.1/03 — Software Requirements Specification (SRS) 412d15a2a43c81c2a32cf9b74548faac.md",
+      "original_sha256": "b349b2b73f5defda6ec62256a15796a728020414066449b8d6470919c599505e"
+    },
+    {
+      "from": "Docs/04 — Wireframes & User Journey Prototypes 412d15a2a43c815ba980c31d681aadb9.md",
+      "to": "docs/foundations/04-user-journeys.md",
+      "archive": "docs/archive/v0.1/04 — Wireframes & User Journey Prototypes 412d15a2a43c815ba980c31d681aadb9.md",
+      "original_sha256": "17d976493037113ecc39e0a269b0371b1ecd689c3f6fc026dfa0561dc047fb3d"
+    },
+    {
+      "from": "Docs/05 — Data Strategy & Sourcing Plan 412d15a2a43c81a488b8e9af7afb0f61.md",
+      "to": "docs/foundations/05-data-strategy.md",
+      "archive": "docs/archive/v0.1/05 — Data Strategy & Sourcing Plan 412d15a2a43c81a488b8e9af7afb0f61.md",
+      "original_sha256": "90b8d0f621d11790a72400a724733330484ffc61a91919cdc6216d61a6bd8710"
+    },
+    {
+      "from": "Docs/06 — Datasheet for Golden Fixture Dataset 412d15a2a43c813ca27ce91c58aaf45e.md",
+      "to": "docs/foundations/06-golden-fixture-datasheet.md",
+      "archive": "docs/archive/v0.1/06 — Datasheet for Golden Fixture Dataset 412d15a2a43c813ca27ce91c58aaf45e.md",
+      "original_sha256": "b2e757d87ff26f2714d85b43e33cd895369913c7e17cf1cc4183b9b506d71fe4"
+    },
+    {
+      "from": "Docs/07 — AI Architecture & Model Design 412d15a2a43c818f9bb4fc53d28d4071.md",
+      "to": "docs/foundations/07-ai-architecture.md",
+      "archive": "docs/archive/v0.1/07 — AI Architecture & Model Design 412d15a2a43c818f9bb4fc53d28d4071.md",
+      "original_sha256": "af8ace8ae247dfd40d8d089ca7601fd5ec5fb2c2955efb279527ddf905fb211b"
+    },
+    {
+      "from": "Docs/08 — Prompt & Guardrail Specification 412d15a2a43c81a9825bf3bd3023e8b1.md",
+      "to": "docs/foundations/08-prompt-guardrails.md",
+      "archive": "docs/archive/v0.1/08 — Prompt & Guardrail Specification 412d15a2a43c81a9825bf3bd3023e8b1.md",
+      "original_sha256": "dbcc782c2b06de5527481d20bc2297c66a9e48f62d0b545b847c38c5d699ec40"
+    },
+    {
+      "from": "Docs/09 — System Architecture Document (SAD) 412d15a2a43c81749073c0c802da3880.md",
+      "to": "docs/foundations/09-system-architecture.md",
+      "archive": "docs/archive/v0.1/09 — System Architecture Document (SAD) 412d15a2a43c81749073c0c802da3880.md",
+      "original_sha256": "59846ad375b7b8816290bb35574bef9a0b75da78b63e30c3dd550d65efcd25ef"
+    },
+    {
+      "from": "Docs/10 — Technical Design Document & API Contracts 412d15a2a43c818888e0d351cb0cfa94.md",
+      "to": "docs/foundations/10-technical-design-api.md",
+      "archive": "docs/archive/v0.1/10 — Technical Design Document & API Contracts 412d15a2a43c818888e0d351cb0cfa94.md",
+      "original_sha256": "1f06206c4356d24d9caf541da4a6f38fb4b1d7b0f3dbe2e34c706a2115bb68d8"
+    },
+    {
+      "from": "Docs/11 — Security & Threat Model Blueprint 412d15a2a43c81779760f9a96ff56dec.md",
+      "to": "docs/foundations/11-security-threat-model.md",
+      "archive": "docs/archive/v0.1/11 — Security & Threat Model Blueprint 412d15a2a43c81779760f9a96ff56dec.md",
+      "original_sha256": "3609200cc5f2e1d8549e38298e258ed3665e29e532285f6d544a3382f3510b96"
+    },
+    {
+      "from": "Docs/12 — AI Evaluation & Golden Dataset Plan 412d15a2a43c8123b921ec8fc5dd06f3.md",
+      "to": "docs/foundations/12-evaluation-plan.md",
+      "archive": "docs/archive/v0.1/12 — AI Evaluation & Golden Dataset Plan 412d15a2a43c8123b921ec8fc5dd06f3.md",
+      "original_sha256": "dccdc877712971eed4479a675f140daa9d2e03c75431004fcf571c931823729b"
+    },
+    {
+      "from": "Docs/13 — AI Risk & Compliance Assessment 412d15a2a43c81798349d44d53415e74.md",
+      "to": "docs/foundations/13-ai-risk-compliance.md",
+      "archive": "docs/archive/v0.1/13 — AI Risk & Compliance Assessment 412d15a2a43c81798349d44d53415e74.md",
+      "original_sha256": "9258bb3217630750d854e851589add639df9d427302d5f3c0a710848a5a0f252"
+    },
+    {
+      "from": "Docs/14 — Risk Management & Cost Estimation Plan 412d15a2a43c81d0a120c4947957594f.md",
+      "to": "docs/foundations/14-risk-cost-plan.md",
+      "archive": "docs/archive/v0.1/14 — Risk Management & Cost Estimation Plan 412d15a2a43c81d0a120c4947957594f.md",
+      "original_sha256": "4cb08b419b2b272be6d3d1b94d4e51a23c5a9c5bbaf957927e14534893d5ab96"
+    },
+    {
+      "from": "Docs/TestPilot AI — Product & Engineering Hub 412d15a2a43c81c3871ffbc29f7c825b.md",
+      "to": "docs/foundations/index.md",
+      "archive": "docs/archive/v0.1/TestPilot AI — Product & Engineering Hub 412d15a2a43c81c3871ffbc29f7c825b.md",
+      "original_sha256": "ad8109701df006cf63e8f78a1f506f3cb3b4588adec3d916c1eda97a86bdf4e2"
+    },
+    {
+      "from": "Agents.md",
+      "to": "docs/archive/v0.1/Agents.md",
+      "archive": "docs/archive/v0.1/Agents.md",
+      "original_sha256": "aa51db131889eae7b87bb4b23d99e68105faea07ba54984ece2be05a792cef31"
+    }
+  ],
+  "added_paths": [
+    "docs/README.md",
+    "docs/adr/001-deterministic-execution.md",
+    "docs/adr/002-local-controlled-fixtures.md",
+    "docs/adr/003-bounded-hosted-planner.md",
+    "docs/adr/004-queue-worker.md",
+    "docs/adr/005-browser-isolation.md",
+    "docs/adr/006-canonical-contracts.md",
+    "docs/adr/007-durable-jobs.md",
+    "docs/adr/008-verification-review.md",
+    "docs/adr/009-authorization-policy.md",
+    "docs/adr/010-evidence-evaluation.md",
+    "docs/adr/011-documentation-baseline.md",
+    "docs/architecture/baseline.md",
+    "docs/architecture/data-model.md",
+    "docs/architecture/findings-and-evaluation.md",
+    "docs/architecture/job-lifecycle.md",
+    "docs/architecture/runner-protocol.md",
+    "docs/architecture/safety-policy.md",
+    "docs/archive/v0.1/01 — Project Charter & Statement of Work 412d15a2a43c810ca3c7d8b7283780a9.md",
+    "docs/archive/v0.1/02 — Product Requirements Document (PRD) 412d15a2a43c81e3a6c2d9e576dea5c6.md",
+    "docs/archive/v0.1/03 — Software Requirements Specification (SRS) 412d15a2a43c81c2a32cf9b74548faac.md",
+    "docs/archive/v0.1/04 — Wireframes & User Journey Prototypes 412d15a2a43c815ba980c31d681aadb9.md",
+    "docs/archive/v0.1/05 — Data Strategy & Sourcing Plan 412d15a2a43c81a488b8e9af7afb0f61.md",
+    "docs/archive/v0.1/06 — Datasheet for Golden Fixture Dataset 412d15a2a43c813ca27ce91c58aaf45e.md",
+    "docs/archive/v0.1/07 — AI Architecture & Model Design 412d15a2a43c818f9bb4fc53d28d4071.md",
+    "docs/archive/v0.1/08 — Prompt & Guardrail Specification 412d15a2a43c81a9825bf3bd3023e8b1.md",
+    "docs/archive/v0.1/09 — System Architecture Document (SAD) 412d15a2a43c81749073c0c802da3880.md",
+    "docs/archive/v0.1/10 — Technical Design Document & API Contracts 412d15a2a43c818888e0d351cb0cfa94.md",
+    "docs/archive/v0.1/11 — Security & Threat Model Blueprint 412d15a2a43c81779760f9a96ff56dec.md",
+    "docs/archive/v0.1/12 — AI Evaluation & Golden Dataset Plan 412d15a2a43c8123b921ec8fc5dd06f3.md",
+    "docs/archive/v0.1/13 — AI Risk & Compliance Assessment 412d15a2a43c81798349d44d53415e74.md",
+    "docs/archive/v0.1/14 — Risk Management & Cost Estimation Plan 412d15a2a43c81d0a120c4947957594f.md",
+    "docs/archive/v0.1/Agents.md",
+    "docs/archive/v0.1/README.md",
+    "docs/archive/v0.1/TestPilot AI — Product & Engineering Hub 412d15a2a43c81c3871ffbc29f7c825b.md",
+    "docs/change-manifest.json",
+    "docs/contracts/http-api-v1.md",
+    "docs/contracts/test-plan-v1.md",
+    "docs/contracts/test-plan-v1.schema.json",
+    "docs/foundations/01-project-charter.md",
+    "docs/foundations/02-product-requirements.md",
+    "docs/foundations/03-software-requirements.md",
+    "docs/foundations/04-user-journeys.md",
+    "docs/foundations/05-data-strategy.md",
+    "docs/foundations/06-golden-fixture-datasheet.md",
+    "docs/foundations/07-ai-architecture.md",
+    "docs/foundations/08-prompt-guardrails.md",
+    "docs/foundations/09-system-architecture.md",
+    "docs/foundations/10-technical-design-api.md",
+    "docs/foundations/11-security-threat-model.md",
+    "docs/foundations/12-evaluation-plan.md",
+    "docs/foundations/13-ai-risk-compliance.md",
+    "docs/foundations/14-risk-cost-plan.md",
+    "docs/foundations/index.md",
+    "docs/implementation-readiness.md",
+    "docs/reviews/2026-11-08-architecture-resolution.md"
+  ],
+  "modified_existing_paths": [
+    "AGENTS.md",
+    "docs/reviews/2026-11-08-foundation-review.md"
+  ],
+  "removed_original_paths": [
+    "Agents.md",
+    "Docs/01 — Project Charter & Statement of Work 412d15a2a43c810ca3c7d8b7283780a9.md",
+    "Docs/02 — Product Requirements Document (PRD) 412d15a2a43c81e3a6c2d9e576dea5c6.md",
+    "Docs/03 — Software Requirements Specification (SRS) 412d15a2a43c81c2a32cf9b74548faac.md",
+    "Docs/04 — Wireframes & User Journey Prototypes 412d15a2a43c815ba980c31d681aadb9.md",
+    "Docs/05 — Data Strategy & Sourcing Plan 412d15a2a43c81a488b8e9af7afb0f61.md",
+    "Docs/06 — Datasheet for Golden Fixture Dataset 412d15a2a43c813ca27ce91c58aaf45e.md",
+    "Docs/07 — AI Architecture & Model Design 412d15a2a43c818f9bb4fc53d28d4071.md",
+    "Docs/08 — Prompt & Guardrail Specification 412d15a2a43c81a9825bf3bd3023e8b1.md",
+    "Docs/09 — System Architecture Document (SAD) 412d15a2a43c81749073c0c802da3880.md",
+    "Docs/10 — Technical Design Document & API Contracts 412d15a2a43c818888e0d351cb0cfa94.md",
+    "Docs/11 — Security & Threat Model Blueprint 412d15a2a43c81779760f9a96ff56dec.md",
+    "Docs/12 — AI Evaluation & Golden Dataset Plan 412d15a2a43c8123b921ec8fc5dd06f3.md",
+    "Docs/13 — AI Risk & Compliance Assessment 412d15a2a43c81798349d44d53415e74.md",
+    "Docs/14 — Risk Management & Cost Estimation Plan 412d15a2a43c81d0a120c4947957594f.md",
+    "Docs/TestPilot AI — Product & Engineering Hub 412d15a2a43c81c3871ffbc29f7c825b.md"
+  ],
+  "note": "Removed original paths were relocated; every original source is preserved at its archive path with the recorded SHA-256. Active relocated foundations were revised; all other additions are documentation/schema artifacts. This manifest includes itself and the change report in added_paths.",
+  "followup_clarifications": {
+    "date": "2026-11-08",
+    "description": "Repeated documentation review: fill persisted lease/command entities and align deadline/privacy/backup/reporting wording; no application code or environment changes.",
+    "modified_existing_paths": [
+      "docs/README.md",
+      "docs/adr/007-durable-jobs.md",
+      "docs/adr/010-evidence-evaluation.md",
+      "docs/architecture/data-model.md",
+      "docs/architecture/job-lifecycle.md",
+      "docs/change-manifest.json",
+      "docs/foundations/05-data-strategy.md",
+      "docs/foundations/08-prompt-guardrails.md",
+      "docs/foundations/09-system-architecture.md",
+      "docs/foundations/10-technical-design-api.md",
+      "docs/foundations/11-security-threat-model.md",
+      "docs/implementation-readiness.md",
+      "docs/reviews/2026-11-08-architecture-resolution.md"
+    ],
+    "added_paths": [
+      "docs/reviews/2026-11-08-baseline-revalidation.md"
+    ],
+    "removed_paths": [],
+    "prior_sha256": {
+      "docs/README.md": "0030375c9d0f773bd6b2799f70ae3f5359689b10e6b067626afcb324b39c82ac",
+      "docs/adr/007-durable-jobs.md": "71695a4f0c48b8e39a7f9c62de16b562f3600ab5cf82075fcc7f3b019a47de0f",
+      "docs/adr/010-evidence-evaluation.md": "bb02c578973904a71f8ee6da2176a9e068deab14a052785ecacd5b861ced7dc2",
+      "docs/architecture/data-model.md": "5286128b8b28e3bd55c3c676ddcef4e84b52e06c435c98b9fa4e73d0d68ad7b3",
+      "docs/architecture/job-lifecycle.md": "2982c6fc8e426380ff040e918c7eed42ee31977f224b995fc6a5eaa85d8aeef9",
+      "docs/change-manifest.json": "15de0cb351fc10b5195bb0f3f60bb24f65809c869e1edbc36de9b9520b732581",
+      "docs/foundations/05-data-strategy.md": "4e5042bf414b03265730a96a6ecabcc8737a6dc35dd7e23dc0b5c30d0f4ff114",
+      "docs/foundations/08-prompt-guardrails.md": "d348fe00669754b81d66cae2e8d951a67647f500b94ee07fa30ba057aa9ba700",
+      "docs/foundations/09-system-architecture.md": "a54360f6022dec82fcce866f04cf749abb060a6c336e1c9ec4ccee095a70341d",
+      "docs/foundations/10-technical-design-api.md": "61c819b10d6ca2d74c9be037a6529c0facf7193dbf8928e01113eaf90e9b34ed",
+      "docs/foundations/11-security-threat-model.md": "5c85f4e934f681551935040d83a07ab794ba2d7d143f7e2f61fa03836abb3344",
+      "docs/implementation-readiness.md": "24a963f004e1daaff6ce19f79cf6e53619681944740d57e93d3d3835414b4ed6",
+      "docs/reviews/2026-11-08-architecture-resolution.md": "6ed1693112635c1c753384f8a0e5155bb946c3a3ea1c6d477d3606930959591b"
+    }
+  }
+}
