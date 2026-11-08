@@ -121,3 +121,13 @@ def test_missing_planner_never_substitutes(client):
         ).status_code
         == 503
     )
+
+
+def test_readiness_fails_closed_when_storage_is_unavailable(client, store):
+    from testpilot.db import Base
+
+    sessions, _ = store
+    Base.metadata.drop_all(sessions.kw["bind"])
+    response = client.get("/api/ready")
+    assert response.status_code == 503
+    assert response.json()["code"] == "storage_unavailable"

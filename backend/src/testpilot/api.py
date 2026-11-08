@@ -13,7 +13,7 @@ from fastapi.exceptions import RequestValidationError
 from fastapi.responses import FileResponse, JSONResponse
 from pydantic import Field
 from sqlalchemy import select
-from sqlalchemy.exc import IntegrityError
+from sqlalchemy.exc import IntegrityError, SQLAlchemyError
 
 from testpilot.contracts import StrictModel
 from testpilot.db import (
@@ -113,6 +113,17 @@ def create_app(sessions=None, data_dir=None, ui_origin=None):
     @app.exception_handler(APIError)
     async def api_error(_, exc):
         return error(exc.status, exc.code, exc.message)
+
+    @app.exception_handler(SQLAlchemyError)
+    async def storage_error(_, exc):
+        import logging
+
+        logging.getLogger("testpilot").error("storage_unavailable:%s", type(exc).__name__)
+        return error(
+            503,
+            "storage_unavailable",
+            "Application storage is unavailable; inspect local service diagnostics.",
+        )
 
     @app.exception_handler(IntegrityError)
     async def integrity_error(_, exc):
