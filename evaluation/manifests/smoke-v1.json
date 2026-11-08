@@ -1,0 +1,1 @@
+{"version":"smoke-v1","purpose":"development benchmark; no held-out/generalization claim","fixture_version":"1.0.0","prompt_version":"smoke-1","planner":"deterministic_smoke","schema_version":"1.0.0","shuffle_seed":20261108,"repeats":3,"scenarios":["/form","/email","/login","/navigation","/cart"],"human_reviews":0,"independent_human_oracle_review":"pending"}

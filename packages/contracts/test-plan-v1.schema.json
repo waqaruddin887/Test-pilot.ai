@@ -1,0 +1,400 @@
+{
+  "$defs": {
+    "AssertUrl": {
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "pattern": "^[a-z][a-z0-9_-]{0,31}$",
+          "title": "Id",
+          "type": "string"
+        },
+        "timeout_ms": {
+          "maximum": 30000,
+          "minimum": 1,
+          "title": "Timeout Ms",
+          "type": "integer"
+        },
+        "action": {
+          "const": "assert_url",
+          "title": "Action",
+          "type": "string"
+        },
+        "path": {
+          "maxLength": 2048,
+          "minLength": 1,
+          "pattern": "^/",
+          "title": "Path",
+          "type": "string"
+        },
+        "oracle_ref": {
+          "anyOf": [
+            {
+              "maxLength": 128,
+              "minLength": 3,
+              "pattern": "^[A-Z][A-Z0-9_-]*@[1-9][0-9]*$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Oracle Ref"
+        }
+      },
+      "required": [
+        "id",
+        "timeout_ms",
+        "action",
+        "path",
+        "oracle_ref"
+      ],
+      "title": "AssertUrl",
+      "type": "object"
+    },
+    "AssertVisible": {
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "pattern": "^[a-z][a-z0-9_-]{0,31}$",
+          "title": "Id",
+          "type": "string"
+        },
+        "timeout_ms": {
+          "maximum": 30000,
+          "minimum": 1,
+          "title": "Timeout Ms",
+          "type": "integer"
+        },
+        "action": {
+          "const": "assert_visible",
+          "title": "Action",
+          "type": "string"
+        },
+        "target": {
+          "discriminator": {
+            "mapping": {
+              "role": "#/$defs/RoleTarget",
+              "text": "#/$defs/TextTarget"
+            },
+            "propertyName": "kind"
+          },
+          "oneOf": [
+            {
+              "$ref": "#/$defs/RoleTarget"
+            },
+            {
+              "$ref": "#/$defs/TextTarget"
+            }
+          ],
+          "title": "Target"
+        },
+        "oracle_ref": {
+          "anyOf": [
+            {
+              "maxLength": 128,
+              "minLength": 3,
+              "pattern": "^[A-Z][A-Z0-9_-]*@[1-9][0-9]*$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Oracle Ref"
+        }
+      },
+      "required": [
+        "id",
+        "timeout_ms",
+        "action",
+        "target",
+        "oracle_ref"
+      ],
+      "title": "AssertVisible",
+      "type": "object"
+    },
+    "Case": {
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "pattern": "^[a-z][a-z0-9_-]{0,31}$",
+          "title": "Id",
+          "type": "string"
+        },
+        "title": {
+          "maxLength": 256,
+          "minLength": 1,
+          "pattern": "\\S",
+          "title": "Title",
+          "type": "string"
+        },
+        "intent": {
+          "enum": [
+            "requirement",
+            "exploratory"
+          ],
+          "title": "Intent",
+          "type": "string"
+        },
+        "steps": {
+          "items": {
+            "discriminator": {
+              "mapping": {
+                "assert_url": "#/$defs/AssertUrl",
+                "assert_visible": "#/$defs/AssertVisible",
+                "click": "#/$defs/Click",
+                "fill": "#/$defs/Fill",
+                "navigate": "#/$defs/Navigate"
+              },
+              "propertyName": "action"
+            },
+            "oneOf": [
+              {
+                "$ref": "#/$defs/Navigate"
+              },
+              {
+                "$ref": "#/$defs/Click"
+              },
+              {
+                "$ref": "#/$defs/Fill"
+              },
+              {
+                "$ref": "#/$defs/AssertVisible"
+              },
+              {
+                "$ref": "#/$defs/AssertUrl"
+              }
+            ]
+          },
+          "maxItems": 12,
+          "minItems": 1,
+          "title": "Steps",
+          "type": "array"
+        }
+      },
+      "required": [
+        "id",
+        "title",
+        "intent",
+        "steps"
+      ],
+      "title": "Case",
+      "type": "object"
+    },
+    "Click": {
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "pattern": "^[a-z][a-z0-9_-]{0,31}$",
+          "title": "Id",
+          "type": "string"
+        },
+        "timeout_ms": {
+          "maximum": 30000,
+          "minimum": 1,
+          "title": "Timeout Ms",
+          "type": "integer"
+        },
+        "action": {
+          "const": "click",
+          "title": "Action",
+          "type": "string"
+        },
+        "target": {
+          "discriminator": {
+            "mapping": {
+              "role": "#/$defs/RoleTarget",
+              "text": "#/$defs/TextTarget"
+            },
+            "propertyName": "kind"
+          },
+          "oneOf": [
+            {
+              "$ref": "#/$defs/RoleTarget"
+            },
+            {
+              "$ref": "#/$defs/TextTarget"
+            }
+          ],
+          "title": "Target"
+        }
+      },
+      "required": [
+        "id",
+        "timeout_ms",
+        "action",
+        "target"
+      ],
+      "title": "Click",
+      "type": "object"
+    },
+    "Fill": {
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "pattern": "^[a-z][a-z0-9_-]{0,31}$",
+          "title": "Id",
+          "type": "string"
+        },
+        "timeout_ms": {
+          "maximum": 30000,
+          "minimum": 1,
+          "title": "Timeout Ms",
+          "type": "integer"
+        },
+        "action": {
+          "const": "fill",
+          "title": "Action",
+          "type": "string"
+        },
+        "target": {
+          "$ref": "#/$defs/RoleTarget"
+        },
+        "value": {
+          "maxLength": 256,
+          "title": "Value",
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "timeout_ms",
+        "action",
+        "target",
+        "value"
+      ],
+      "title": "Fill",
+      "type": "object"
+    },
+    "Navigate": {
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "pattern": "^[a-z][a-z0-9_-]{0,31}$",
+          "title": "Id",
+          "type": "string"
+        },
+        "timeout_ms": {
+          "maximum": 30000,
+          "minimum": 1,
+          "title": "Timeout Ms",
+          "type": "integer"
+        },
+        "action": {
+          "const": "navigate",
+          "title": "Action",
+          "type": "string"
+        },
+        "path": {
+          "maxLength": 2048,
+          "minLength": 1,
+          "pattern": "^/",
+          "title": "Path",
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "timeout_ms",
+        "action",
+        "path"
+      ],
+      "title": "Navigate",
+      "type": "object"
+    },
+    "RoleTarget": {
+      "additionalProperties": false,
+      "properties": {
+        "kind": {
+          "const": "role",
+          "title": "Kind",
+          "type": "string"
+        },
+        "role": {
+          "enum": [
+            "button",
+            "link",
+            "textbox",
+            "checkbox",
+            "radio",
+            "combobox",
+            "option",
+            "heading",
+            "status",
+            "alert"
+          ],
+          "title": "Role",
+          "type": "string"
+        },
+        "name": {
+          "maxLength": 256,
+          "minLength": 1,
+          "pattern": "\\S",
+          "title": "Name",
+          "type": "string"
+        }
+      },
+      "required": [
+        "kind",
+        "role",
+        "name"
+      ],
+      "title": "RoleTarget",
+      "type": "object"
+    },
+    "TextTarget": {
+      "additionalProperties": false,
+      "properties": {
+        "kind": {
+          "const": "text",
+          "title": "Kind",
+          "type": "string"
+        },
+        "text": {
+          "maxLength": 256,
+          "minLength": 1,
+          "pattern": "\\S",
+          "title": "Text",
+          "type": "string"
+        }
+      },
+      "required": [
+        "kind",
+        "text"
+      ],
+      "title": "TextTarget",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": "1.0.0",
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "objective": {
+      "maxLength": 1000,
+      "minLength": 1,
+      "pattern": "\\S",
+      "title": "Objective",
+      "type": "string"
+    },
+    "cases": {
+      "items": {
+        "$ref": "#/$defs/Case"
+      },
+      "maxItems": 5,
+      "minItems": 1,
+      "title": "Cases",
+      "type": "array"
+    }
+  },
+  "required": [
+    "schema_version",
+    "objective",
+    "cases"
+  ],
+  "title": "TestPlan",
+  "type": "object"
+}

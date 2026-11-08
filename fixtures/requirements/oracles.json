@@ -1,0 +1,12 @@
+{
+  "fixture_version": "1.0.0",
+  "source": "fixtures/requirements/oracles.json",
+  "review_status": "author_checked_reference_tests_pending_independent_human_review",
+  "oracles": [
+    {"ref":"FORM-001@1","path":"/form","requirement":"Submitting an empty email must show Email is required.","assertion":{"action":"assert_visible","target":{"kind":"text","text":"Email is required"}},"severity":"medium"},
+    {"ref":"EMAIL-001@1","path":"/email","requirement":"Submitting not-an-email must show Enter a valid email.","assertion":{"action":"assert_visible","target":{"kind":"text","text":"Enter a valid email"}},"severity":"medium"},
+    {"ref":"LOGIN-001@1","path":"/login","requirement":"The fake user nobody with fake password wrong must be rejected with Invalid credentials. No authentication sessions are created.","assertion":{"action":"assert_visible","target":{"kind":"text","text":"Invalid credentials"}},"severity":"high"},
+    {"ref":"NAV-001@1","path":"/navigation","requirement":"The Continue link must navigate to /destination.","assertion":{"action":"assert_url","path":"/destination"},"severity":"medium"},
+    {"ref":"CART-001@1","path":"/cart","requirement":"Two items at $12.50 plus $5 shipping total $30.00. Show Total: $30.00. No checkout exists.","assertion":{"action":"assert_visible","target":{"kind":"text","text":"Total: $30.00"}},"severity":"high"}
+  ]
+}
