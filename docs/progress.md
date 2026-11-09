@@ -83,3 +83,9 @@
 - Inspected all nine existing commits and 229 unique tracked file versions with credential-pattern, private-file-path and exact local-secret checks. No local-secret matches or tracked private/runtime files were found. Reviewed flagged configuration placeholders and runtime credential-generation expressions; these contain no actual credentials. This review is not a guarantee against every possible secret format.
 - Expanded `.gitignore` to exclude environment variants, credential/key files and local databases while retaining `.env.example`. Executed exclusion checks for 20 private/generated paths and inclusion checks for example configuration and application sources; all passed. `git diff --check` passed. No application behavior changed or application-suite rerun claimed.
 - GitHub CLI device authorization initiated; repository creation and push remain pending until the intended account is authenticated. No repository URL or successful publication is claimed by this preparation entry.
+
+## 2026-11-09 — Public implementation repository published
+
+- Authenticated GitHub account confirmed as `waqaruddin887`. Created the personally owned public repository https://github.com/waqaruddin887/Test-pilot.ai and pushed the implementation and reviewed history through preparation commit `b2b5634` to `main`.
+- Configured local `origin` as `https://github.com/waqaruddin887/Test-pilot.ai.git`; local `main` now tracks `origin/main`. Publication includes backend/frontend source, fixtures, tests, scripts, dependency locks, contracts and documentation. Private `.env`, runtime evidence/databases and installed dependencies remain local and ignored.
+- Repeated tracked-private-file and whitespace checks before the push; no private files were listed and whitespace validation passed. This publishes source code; it does not deploy the application or change the documented restricted-demo completion status.
