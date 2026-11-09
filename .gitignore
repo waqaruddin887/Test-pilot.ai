@@ -4,7 +4,23 @@ __pycache__/
 .pytest_cache/
 .ruff_cache/
 .env
-.env.local
+.env.*
+!.env.example
+*.env
+
+# Private credentials and local database contents must stay off the public remote.
+*.pem
+*.key
+*.p12
+*.pfx
+.aws/
+.ssh/
+*.db
+*.db-*
+*.sqlite
+*.sqlite-*
+*.sqlite3
+*.sqlite3-*
 node_modules/
 .next/
 *.tsbuildinfo
