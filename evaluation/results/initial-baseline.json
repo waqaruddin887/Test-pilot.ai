@@ -1,0 +1,1393 @@
+{
+  "manifest": {
+    "version": "smoke-v1",
+    "purpose": "development benchmark; no held-out/generalization claim",
+    "fixture_version": "1.0.0",
+    "prompt_version": "smoke-1",
+    "planner": "deterministic_smoke",
+    "schema_version": "1.0.0",
+    "shuffle_seed": 20261108,
+    "repeats": 3,
+    "scenarios": [
+      "/form",
+      "/email",
+      "/login",
+      "/navigation",
+      "/cart"
+    ],
+    "human_reviews": 0,
+    "independent_human_oracle_review": "pending"
+  },
+  "manifest_sha256": "ec7f8186f5d980d97c164e167c385006d9f235d933415a12c6e366a68b0a5671",
+  "oracle_sha256": "75716866b7c131a46a80c120f49b075df1091593fc5f82f13ba104caa815467c",
+  "fixture_source_sha256": "253ea26d01a1b22bc703a19f94647021745a9083d8098a4756a5c247747537d8",
+  "git_commit": "HEAD",
+  "started_at": 1794142466.9085617,
+  "reference_checks": [
+    {
+      "path": "/form",
+      "defective": false,
+      "conforms": true
+    },
+    {
+      "path": "/form",
+      "defective": true,
+      "conforms": false
+    },
+    {
+      "path": "/email",
+      "defective": false,
+      "conforms": true
+    },
+    {
+      "path": "/email",
+      "defective": true,
+      "conforms": false
+    },
+    {
+      "path": "/login",
+      "defective": false,
+      "conforms": true
+    },
+    {
+      "path": "/login",
+      "defective": true,
+      "conforms": false
+    },
+    {
+      "path": "/navigation",
+      "defective": false,
+      "conforms": true
+    },
+    {
+      "path": "/navigation",
+      "defective": true,
+      "conforms": false
+    },
+    {
+      "path": "/cart",
+      "defective": false,
+      "conforms": true
+    },
+    {
+      "path": "/cart",
+      "defective": true,
+      "conforms": false
+    }
+  ],
+  "trials": [
+    {
+      "path": "/email",
+      "defective": false,
+      "repeat": 2,
+      "schema_valid": true,
+      "policy_accepted": true,
+      "reproduced": false,
+      "evidence_complete": false,
+      "error": null,
+      "browser": "149.0.7827.55",
+      "assessment": "pass",
+      "attempted_steps": 4,
+      "completed_steps": 4,
+      "artifacts": [
+        {
+          "kind": "screenshot",
+          "sha256": "99afe20b6e6ae10c2816675671c3a011bd535c533eea6683d2053df089c0e891"
+        },
+        {
+          "kind": "trace",
+          "sha256": "64c2576cf571e0c4d5e3b01e075c6bc006adbd481a36c4362985a1b1427e7e7d"
+        }
+      ],
+      "planner": {
+        "kind": "deterministic_smoke",
+        "model": "none",
+        "prompt_version": "smoke-1",
+        "latency_ms": 1.581,
+        "input_tokens": null,
+        "output_tokens": null,
+        "cost": null,
+        "provider_called": false
+      },
+      "reproduced_oracle_candidate": false,
+      "machine_verified": false,
+      "human_confirmed": false,
+      "latency_seconds": 3.67
+    },
+    {
+      "path": "/navigation",
+      "defective": false,
+      "repeat": 0,
+      "schema_valid": true,
+      "policy_accepted": true,
+      "reproduced": false,
+      "evidence_complete": false,
+      "error": null,
+      "browser": "149.0.7827.55",
+      "assessment": "pass",
+      "attempted_steps": 3,
+      "completed_steps": 3,
+      "artifacts": [
+        {
+          "kind": "screenshot",
+          "sha256": "75ed3c85d0134499edca35911dcfd519d9bf227150c533fd2231ee39d85bf35e"
+        },
+        {
+          "kind": "trace",
+          "sha256": "5f6cbb748d57614ddb4301499a8704edd892c45a3aea06a61878f9803f77b0fa"
+        }
+      ],
+      "planner": {
+        "kind": "deterministic_smoke",
+        "model": "none",
+        "prompt_version": "smoke-1",
+        "latency_ms": 0.689,
+        "input_tokens": null,
+        "output_tokens": null,
+        "cost": null,
+        "provider_called": false
+      },
+      "reproduced_oracle_candidate": false,
+      "machine_verified": false,
+      "human_confirmed": false,
+      "latency_seconds": 3.265
+    },
+    {
+      "path": "/login",
+      "defective": true,
+      "repeat": 0,
+      "schema_valid": true,
+      "policy_accepted": true,
+      "reproduced": true,
+      "evidence_complete": true,
+      "error": null,
+      "browser": "149.0.7827.55",
+      "assessment": "suspected",
+      "attempted_steps": 10,
+      "completed_steps": 10,
+      "artifacts": [
+        {
+          "kind": "screenshot",
+          "sha256": "c023204da39f0c1437dd502ffb8b45233273683a08c82fe7e75bbb4dac9aa464"
+        },
+        {
+          "kind": "trace",
+          "sha256": "5be4eac57e45f36294d73d91fb95395c06d0991c76930fa9b3ead45cf37d104e"
+        },
+        {
+          "kind": "screenshot",
+          "sha256": "c023204da39f0c1437dd502ffb8b45233273683a08c82fe7e75bbb4dac9aa464"
+        },
+        {
+          "kind": "trace",
+          "sha256": "0a9160d020f895afb0de573baad035e1a48f5767e20479d8e4bcdbbcd1f72e80"
+        }
+      ],
+      "planner": {
+        "kind": "deterministic_smoke",
+        "model": "none",
+        "prompt_version": "smoke-1",
+        "latency_ms": 0.776,
+        "input_tokens": null,
+        "output_tokens": null,
+        "cost": null,
+        "provider_called": false
+      },
+      "reproduction_attempted": true,
+      "reproduced_oracle_candidate": true,
+      "machine_verified": false,
+      "human_confirmed": false,
+      "latency_seconds": 6.846
+    },
+    {
+      "path": "/navigation",
+      "defective": false,
+      "repeat": 1,
+      "schema_valid": true,
+      "policy_accepted": true,
+      "reproduced": false,
+      "evidence_complete": false,
+      "error": null,
+      "browser": "149.0.7827.55",
+      "assessment": "pass",
+      "attempted_steps": 3,
+      "completed_steps": 3,
+      "artifacts": [
+        {
+          "kind": "screenshot",
+          "sha256": "75ed3c85d0134499edca35911dcfd519d9bf227150c533fd2231ee39d85bf35e"
+        },
+        {
+          "kind": "trace",
+          "sha256": "1f011dcfaaa7a3e77416c58c1558f4de841a12c9b63c6178c1423e69f8fb804b"
+        }
+      ],
+      "planner": {
+        "kind": "deterministic_smoke",
+        "model": "none",
+        "prompt_version": "smoke-1",
+        "latency_ms": 0.863,
+        "input_tokens": null,
+        "output_tokens": null,
+        "cost": null,
+        "provider_called": false
+      },
+      "reproduced_oracle_candidate": false,
+      "machine_verified": false,
+      "human_confirmed": false,
+      "latency_seconds": 3.575
+    },
+    {
+      "path": "/cart",
+      "defective": false,
+      "repeat": 2,
+      "schema_valid": true,
+      "policy_accepted": true,
+      "reproduced": false,
+      "evidence_complete": false,
+      "error": null,
+      "browser": "149.0.7827.55",
+      "assessment": "pass",
+      "attempted_steps": 2,
+      "completed_steps": 2,
+      "artifacts": [
+        {
+          "kind": "screenshot",
+          "sha256": "ca6a31cb42a93ca7237683811fa43265d870f86b3fde4f223cde352be132e3c8"
+        },
+        {
+          "kind": "trace",
+          "sha256": "27e8b88fb07207d734f8e02198f86a1be61ca7974ca1c11cbadf87039cbbc706"
+        }
+      ],
+      "planner": {
+        "kind": "deterministic_smoke",
+        "model": "none",
+        "prompt_version": "smoke-1",
+        "latency_ms": 0.63,
+        "input_tokens": null,
+        "output_tokens": null,
+        "cost": null,
+        "provider_called": false
+      },
+      "reproduced_oracle_candidate": false,
+      "machine_verified": false,
+      "human_confirmed": false,
+      "latency_seconds": 3.266
+    },
+    {
+      "path": "/navigation",
+      "defective": true,
+      "repeat": 1,
+      "schema_valid": true,
+      "policy_accepted": true,
+      "reproduced": true,
+      "evidence_complete": true,
+      "error": null,
+      "browser": "149.0.7827.55",
+      "assessment": "suspected",
+      "attempted_steps": 6,
+      "completed_steps": 6,
+      "artifacts": [
+        {
+          "kind": "screenshot",
+          "sha256": "3ffe07d22fb70b98f8bb35daa654035ddbf5bd3e8d5c0002444817c07399bec5"
+        },
+        {
+          "kind": "trace",
+          "sha256": "6ced990308ce44bc5e54b0bbcee096e3492b42023fcc8f0aaac4d3cca0390605"
+        },
+        {
+          "kind": "screenshot",
+          "sha256": "3ffe07d22fb70b98f8bb35daa654035ddbf5bd3e8d5c0002444817c07399bec5"
+        },
+        {
+          "kind": "trace",
+          "sha256": "dffe81e94f64cf6a217955dfc89b06d87ae17177281e3b205e835e3c5bdbcb74"
+        }
+      ],
+      "planner": {
+        "kind": "deterministic_smoke",
+        "model": "none",
+        "prompt_version": "smoke-1",
+        "latency_ms": 0.671,
+        "input_tokens": null,
+        "output_tokens": null,
+        "cost": null,
+        "provider_called": false
+      },
+      "reproduction_attempted": true,
+      "reproduced_oracle_candidate": true,
+      "machine_verified": false,
+      "human_confirmed": false,
+      "latency_seconds": 6.756
+    },
+    {
+      "path": "/login",
+      "defective": true,
+      "repeat": 1,
+      "schema_valid": true,
+      "policy_accepted": true,
+      "reproduced": true,
+      "evidence_complete": true,
+      "error": null,
+      "browser": "149.0.7827.55",
+      "assessment": "suspected",
+      "attempted_steps": 10,
+      "completed_steps": 10,
+      "artifacts": [
+        {
+          "kind": "screenshot",
+          "sha256": "c023204da39f0c1437dd502ffb8b45233273683a08c82fe7e75bbb4dac9aa464"
+        },
+        {
+          "kind": "trace",
+          "sha256": "5a49a2615c85fa015e36dc19e60cd699776509ea4f0b3d8ed6274a0033150894"
+        },
+        {
+          "kind": "screenshot",
+          "sha256": "c023204da39f0c1437dd502ffb8b45233273683a08c82fe7e75bbb4dac9aa464"
+        },
+        {
+          "kind": "trace",
+          "sha256": "11f85aa44f45ad401d07b501cf7ad93d2278eb8d308a257dd41a9adc7f08e9f0"
+        }
+      ],
+      "planner": {
+        "kind": "deterministic_smoke",
+        "model": "none",
+        "prompt_version": "smoke-1",
+        "latency_ms": 0.791,
+        "input_tokens": null,
+        "output_tokens": null,
+        "cost": null,
+        "provider_called": false
+      },
+      "reproduction_attempted": true,
+      "reproduced_oracle_candidate": true,
+      "machine_verified": false,
+      "human_confirmed": false,
+      "latency_seconds": 6.961
+    },
+    {
+      "path": "/cart",
+      "defective": false,
+      "repeat": 1,
+      "schema_valid": true,
+      "policy_accepted": true,
+      "reproduced": false,
+      "evidence_complete": false,
+      "error": null,
+      "browser": "149.0.7827.55",
+      "assessment": "pass",
+      "attempted_steps": 2,
+      "completed_steps": 2,
+      "artifacts": [
+        {
+          "kind": "screenshot",
+          "sha256": "ca6a31cb42a93ca7237683811fa43265d870f86b3fde4f223cde352be132e3c8"
+        },
+        {
+          "kind": "trace",
+          "sha256": "61ac46250b5fe04b4a5c671db572193acc6aae6a7e8ec78cad067872ce0bf182"
+        }
+      ],
+      "planner": {
+        "kind": "deterministic_smoke",
+        "model": "none",
+        "prompt_version": "smoke-1",
+        "latency_ms": 0.519,
+        "input_tokens": null,
+        "output_tokens": null,
+        "cost": null,
+        "provider_called": false
+      },
+      "reproduced_oracle_candidate": false,
+      "machine_verified": false,
+      "human_confirmed": false,
+      "latency_seconds": 3.157
+    },
+    {
+      "path": "/form",
+      "defective": true,
+      "repeat": 2,
+      "schema_valid": true,
+      "policy_accepted": true,
+      "reproduced": true,
+      "evidence_complete": true,
+      "error": null,
+      "browser": "149.0.7827.55",
+      "assessment": "suspected",
+      "attempted_steps": 6,
+      "completed_steps": 6,
+      "artifacts": [
+        {
+          "kind": "screenshot",
+          "sha256": "ea558193607d602e59c7a73147aaa5015abefe829710441079025a6f3a43412a"
+        },
+        {
+          "kind": "trace",
+          "sha256": "71ebec8f462bce4488feec120df6f741c3456e4443c7e012567641b41f749119"
+        },
+        {
+          "kind": "screenshot",
+          "sha256": "ea558193607d602e59c7a73147aaa5015abefe829710441079025a6f3a43412a"
+        },
+        {
+          "kind": "trace",
+          "sha256": "32f5676794ed2fdd2bdf849f4aa34d5fd44c68c44075272829cf2a894882c362"
+        }
+      ],
+      "planner": {
+        "kind": "deterministic_smoke",
+        "model": "none",
+        "prompt_version": "smoke-1",
+        "latency_ms": 0.662,
+        "input_tokens": null,
+        "output_tokens": null,
+        "cost": null,
+        "provider_called": false
+      },
+      "reproduction_attempted": true,
+      "reproduced_oracle_candidate": true,
+      "machine_verified": false,
+      "human_confirmed": false,
+      "latency_seconds": 6.943
+    },
+    {
+      "path": "/cart",
+      "defective": true,
+      "repeat": 1,
+      "schema_valid": true,
+      "policy_accepted": true,
+      "reproduced": true,
+      "evidence_complete": true,
+      "error": null,
+      "browser": "149.0.7827.55",
+      "assessment": "suspected",
+      "attempted_steps": 4,
+      "completed_steps": 4,
+      "artifacts": [
+        {
+          "kind": "screenshot",
+          "sha256": "08a2defee1da9e5be01def472cda662621057e74db88ae13538c614654722c0e"
+        },
+        {
+          "kind": "trace",
+          "sha256": "1a0824626b851e04f511f5746d6c3379dd37a4bf03d99ff52c1fcad39075287b"
+        },
+        {
+          "kind": "screenshot",
+          "sha256": "08a2defee1da9e5be01def472cda662621057e74db88ae13538c614654722c0e"
+        },
+        {
+          "kind": "trace",
+          "sha256": "2caa84629bacb957611edd18ac43798bdf4e5b2f52a7c4fbce97e8dbe588cb9a"
+        }
+      ],
+      "planner": {
+        "kind": "deterministic_smoke",
+        "model": "none",
+        "prompt_version": "smoke-1",
+        "latency_ms": 0.602,
+        "input_tokens": null,
+        "output_tokens": null,
+        "cost": null,
+        "provider_called": false
+      },
+      "reproduction_attempted": true,
+      "reproduced_oracle_candidate": true,
+      "machine_verified": false,
+      "human_confirmed": false,
+      "latency_seconds": 7.054
+    },
+    {
+      "path": "/form",
+      "defective": false,
+      "repeat": 1,
+      "schema_valid": true,
+      "policy_accepted": true,
+      "reproduced": false,
+      "evidence_complete": false,
+      "error": null,
+      "browser": "149.0.7827.55",
+      "assessment": "pass",
+      "attempted_steps": 3,
+      "completed_steps": 3,
+      "artifacts": [
+        {
+          "kind": "screenshot",
+          "sha256": "cf1105e9b3233b2ab170444d769c1caedc64eb4a7c0aaf56f513cfaaffb8fcff"
+        },
+        {
+          "kind": "trace",
+          "sha256": "33c4a8022787ccad463ea99838a85529136ed7865d65b92f49bf711d337ba33d"
+        }
+      ],
+      "planner": {
+        "kind": "deterministic_smoke",
+        "model": "none",
+        "prompt_version": "smoke-1",
+        "latency_ms": 0.636,
+        "input_tokens": null,
+        "output_tokens": null,
+        "cost": null,
+        "provider_called": false
+      },
+      "reproduced_oracle_candidate": false,
+      "machine_verified": false,
+      "human_confirmed": false,
+      "latency_seconds": 3.88
+    },
+    {
+      "path": "/cart",
+      "defective": true,
+      "repeat": 0,
+      "schema_valid": true,
+      "policy_accepted": true,
+      "reproduced": true,
+      "evidence_complete": true,
+      "error": null,
+      "browser": "149.0.7827.55",
+      "assessment": "suspected",
+      "attempted_steps": 4,
+      "completed_steps": 4,
+      "artifacts": [
+        {
+          "kind": "screenshot",
+          "sha256": "08a2defee1da9e5be01def472cda662621057e74db88ae13538c614654722c0e"
+        },
+        {
+          "kind": "trace",
+          "sha256": "ad56a25b8c68e6fcba31a64a0d279deecfae235f5047c557f7210678a865680b"
+        },
+        {
+          "kind": "screenshot",
+          "sha256": "08a2defee1da9e5be01def472cda662621057e74db88ae13538c614654722c0e"
+        },
+        {
+          "kind": "trace",
+          "sha256": "68d9de1de8004573883d7ee96005c89595189b4999009b91e25f66085717d548"
+        }
+      ],
+      "planner": {
+        "kind": "deterministic_smoke",
+        "model": "none",
+        "prompt_version": "smoke-1",
+        "latency_ms": 0.463,
+        "input_tokens": null,
+        "output_tokens": null,
+        "cost": null,
+        "provider_called": false
+      },
+      "reproduction_attempted": true,
+      "reproduced_oracle_candidate": true,
+      "machine_verified": false,
+      "human_confirmed": false,
+      "latency_seconds": 6.845
+    },
+    {
+      "path": "/email",
+      "defective": false,
+      "repeat": 0,
+      "schema_valid": true,
+      "policy_accepted": true,
+      "reproduced": false,
+      "evidence_complete": false,
+      "error": null,
+      "browser": "149.0.7827.55",
+      "assessment": "pass",
+      "attempted_steps": 4,
+      "completed_steps": 4,
+      "artifacts": [
+        {
+          "kind": "screenshot",
+          "sha256": "99afe20b6e6ae10c2816675671c3a011bd535c533eea6683d2053df089c0e891"
+        },
+        {
+          "kind": "trace",
+          "sha256": "2a9114361a90cdf78def0500cd9c753d35c70c87990b71a86a609a23f61a4a18"
+        }
+      ],
+      "planner": {
+        "kind": "deterministic_smoke",
+        "model": "none",
+        "prompt_version": "smoke-1",
+        "latency_ms": 0.74,
+        "input_tokens": null,
+        "output_tokens": null,
+        "cost": null,
+        "provider_called": false
+      },
+      "reproduced_oracle_candidate": false,
+      "machine_verified": false,
+      "human_confirmed": false,
+      "latency_seconds": 3.782
+    },
+    {
+      "path": "/cart",
+      "defective": true,
+      "repeat": 2,
+      "schema_valid": true,
+      "policy_accepted": true,
+      "reproduced": true,
+      "evidence_complete": true,
+      "error": null,
+      "browser": "149.0.7827.55",
+      "assessment": "suspected",
+      "attempted_steps": 4,
+      "completed_steps": 4,
+      "artifacts": [
+        {
+          "kind": "screenshot",
+          "sha256": "08a2defee1da9e5be01def472cda662621057e74db88ae13538c614654722c0e"
+        },
+        {
+          "kind": "trace",
+          "sha256": "6eed88976e3418a3f518de396fabcee0d87f458c9746e551e78718f023373e42"
+        },
+        {
+          "kind": "screenshot",
+          "sha256": "08a2defee1da9e5be01def472cda662621057e74db88ae13538c614654722c0e"
+        },
+        {
+          "kind": "trace",
+          "sha256": "fa650e5eacdf7ce85a9e5ab4d6a551bcdf9f0550cecb8f8f91380518c4ae91dc"
+        }
+      ],
+      "planner": {
+        "kind": "deterministic_smoke",
+        "model": "none",
+        "prompt_version": "smoke-1",
+        "latency_ms": 0.586,
+        "input_tokens": null,
+        "output_tokens": null,
+        "cost": null,
+        "provider_called": false
+      },
+      "reproduction_attempted": true,
+      "reproduced_oracle_candidate": true,
+      "machine_verified": false,
+      "human_confirmed": false,
+      "latency_seconds": 7.149
+    },
+    {
+      "path": "/form",
+      "defective": true,
+      "repeat": 1,
+      "schema_valid": true,
+      "policy_accepted": true,
+      "reproduced": true,
+      "evidence_complete": true,
+      "error": null,
+      "browser": "149.0.7827.55",
+      "assessment": "suspected",
+      "attempted_steps": 6,
+      "completed_steps": 6,
+      "artifacts": [
+        {
+          "kind": "screenshot",
+          "sha256": "ea558193607d602e59c7a73147aaa5015abefe829710441079025a6f3a43412a"
+        },
+        {
+          "kind": "trace",
+          "sha256": "38901d7b7e9b202a605090ea084624787fc6bfa597c0dbc5ca67c9df15869077"
+        },
+        {
+          "kind": "screenshot",
+          "sha256": "ea558193607d602e59c7a73147aaa5015abefe829710441079025a6f3a43412a"
+        },
+        {
+          "kind": "trace",
+          "sha256": "8f14c923713ffa09e311ac1082ad1bcd412c22ecce911e0967f01f0e67941eac"
+        }
+      ],
+      "planner": {
+        "kind": "deterministic_smoke",
+        "model": "none",
+        "prompt_version": "smoke-1",
+        "latency_ms": 0.669,
+        "input_tokens": null,
+        "output_tokens": null,
+        "cost": null,
+        "provider_called": false
+      },
+      "reproduction_attempted": true,
+      "reproduced_oracle_candidate": true,
+      "machine_verified": false,
+      "human_confirmed": false,
+      "latency_seconds": 7.148
+    },
+    {
+      "path": "/email",
+      "defective": true,
+      "repeat": 2,
+      "schema_valid": true,
+      "policy_accepted": true,
+      "reproduced": true,
+      "evidence_complete": true,
+      "error": null,
+      "browser": "149.0.7827.55",
+      "assessment": "suspected",
+      "attempted_steps": 8,
+      "completed_steps": 8,
+      "artifacts": [
+        {
+          "kind": "screenshot",
+          "sha256": "5e13ae2564002f3f854218367f4d2ca7976b3e7e61389e26ecb9e22a2a0849df"
+        },
+        {
+          "kind": "trace",
+          "sha256": "a1d4d6b1cfe4e97ac2912461fe6bd14b0dd23ede8080c4c1f58640d27898bf72"
+        },
+        {
+          "kind": "screenshot",
+          "sha256": "5e13ae2564002f3f854218367f4d2ca7976b3e7e61389e26ecb9e22a2a0849df"
+        },
+        {
+          "kind": "trace",
+          "sha256": "481e28e705f024d27a4cbf94ffa3ba2e5f83c5d96e614d5f4c8555d88043eef3"
+        }
+      ],
+      "planner": {
+        "kind": "deterministic_smoke",
+        "model": "none",
+        "prompt_version": "smoke-1",
+        "latency_ms": 0.674,
+        "input_tokens": null,
+        "output_tokens": null,
+        "cost": null,
+        "provider_called": false
+      },
+      "reproduction_attempted": true,
+      "reproduced_oracle_candidate": true,
+      "machine_verified": false,
+      "human_confirmed": false,
+      "latency_seconds": 7.26
+    },
+    {
+      "path": "/navigation",
+      "defective": true,
+      "repeat": 2,
+      "schema_valid": true,
+      "policy_accepted": true,
+      "reproduced": true,
+      "evidence_complete": true,
+      "error": null,
+      "browser": "149.0.7827.55",
+      "assessment": "suspected",
+      "attempted_steps": 6,
+      "completed_steps": 6,
+      "artifacts": [
+        {
+          "kind": "screenshot",
+          "sha256": "3ffe07d22fb70b98f8bb35daa654035ddbf5bd3e8d5c0002444817c07399bec5"
+        },
+        {
+          "kind": "trace",
+          "sha256": "78e9fa6b1ba2133ad5f7eccf232a46b6030497b5b9aefabcce2bf8e0976c8ba7"
+        },
+        {
+          "kind": "screenshot",
+          "sha256": "3ffe07d22fb70b98f8bb35daa654035ddbf5bd3e8d5c0002444817c07399bec5"
+        },
+        {
+          "kind": "trace",
+          "sha256": "18ee56319255ee36f6c9dd0bc8b2b61112d169de410bdc3591e1c84a5d0c1758"
+        }
+      ],
+      "planner": {
+        "kind": "deterministic_smoke",
+        "model": "none",
+        "prompt_version": "smoke-1",
+        "latency_ms": 0.643,
+        "input_tokens": null,
+        "output_tokens": null,
+        "cost": null,
+        "provider_called": false
+      },
+      "reproduction_attempted": true,
+      "reproduced_oracle_candidate": true,
+      "machine_verified": false,
+      "human_confirmed": false,
+      "latency_seconds": 7.262
+    },
+    {
+      "path": "/form",
+      "defective": true,
+      "repeat": 0,
+      "schema_valid": true,
+      "policy_accepted": true,
+      "reproduced": true,
+      "evidence_complete": true,
+      "error": null,
+      "browser": "149.0.7827.55",
+      "assessment": "suspected",
+      "attempted_steps": 6,
+      "completed_steps": 6,
+      "artifacts": [
+        {
+          "kind": "screenshot",
+          "sha256": "ea558193607d602e59c7a73147aaa5015abefe829710441079025a6f3a43412a"
+        },
+        {
+          "kind": "trace",
+          "sha256": "f7c370fd18e5c3b6c3159386ddca42b4fc2db216b50ff08bf618acd720116ec2"
+        },
+        {
+          "kind": "screenshot",
+          "sha256": "ea558193607d602e59c7a73147aaa5015abefe829710441079025a6f3a43412a"
+        },
+        {
+          "kind": "trace",
+          "sha256": "09fcf65dc6e1dc94fe665cc4f596cde36cb28bd9096076bc0f5976b4c3c1f9d6"
+        }
+      ],
+      "planner": {
+        "kind": "deterministic_smoke",
+        "model": "none",
+        "prompt_version": "smoke-1",
+        "latency_ms": 0.873,
+        "input_tokens": null,
+        "output_tokens": null,
+        "cost": null,
+        "provider_called": false
+      },
+      "reproduction_attempted": true,
+      "reproduced_oracle_candidate": true,
+      "machine_verified": false,
+      "human_confirmed": false,
+      "latency_seconds": 7.047
+    },
+    {
+      "path": "/navigation",
+      "defective": false,
+      "repeat": 2,
+      "schema_valid": true,
+      "policy_accepted": true,
+      "reproduced": false,
+      "evidence_complete": false,
+      "error": null,
+      "browser": "149.0.7827.55",
+      "assessment": "pass",
+      "attempted_steps": 3,
+      "completed_steps": 3,
+      "artifacts": [
+        {
+          "kind": "screenshot",
+          "sha256": "75ed3c85d0134499edca35911dcfd519d9bf227150c533fd2231ee39d85bf35e"
+        },
+        {
+          "kind": "trace",
+          "sha256": "ac12c87b694c32d245cd4e90e07f2b108acd24abc9905cd01707bdb72d1a6ddd"
+        }
+      ],
+      "planner": {
+        "kind": "deterministic_smoke",
+        "model": "none",
+        "prompt_version": "smoke-1",
+        "latency_ms": 0.669,
+        "input_tokens": null,
+        "output_tokens": null,
+        "cost": null,
+        "provider_called": false
+      },
+      "reproduced_oracle_candidate": false,
+      "machine_verified": false,
+      "human_confirmed": false,
+      "latency_seconds": 3.775
+    },
+    {
+      "path": "/form",
+      "defective": false,
+      "repeat": 2,
+      "schema_valid": true,
+      "policy_accepted": true,
+      "reproduced": false,
+      "evidence_complete": false,
+      "error": null,
+      "browser": "149.0.7827.55",
+      "assessment": "pass",
+      "attempted_steps": 3,
+      "completed_steps": 3,
+      "artifacts": [
+        {
+          "kind": "screenshot",
+          "sha256": "cf1105e9b3233b2ab170444d769c1caedc64eb4a7c0aaf56f513cfaaffb8fcff"
+        },
+        {
+          "kind": "trace",
+          "sha256": "a10d62594af073e7c1096c45efe1a792fb4a5351a86988ddeffbecc159036190"
+        }
+      ],
+      "planner": {
+        "kind": "deterministic_smoke",
+        "model": "none",
+        "prompt_version": "smoke-1",
+        "latency_ms": 0.74,
+        "input_tokens": null,
+        "output_tokens": null,
+        "cost": null,
+        "provider_called": false
+      },
+      "reproduced_oracle_candidate": false,
+      "machine_verified": false,
+      "human_confirmed": false,
+      "latency_seconds": 3.67
+    },
+    {
+      "path": "/login",
+      "defective": false,
+      "repeat": 1,
+      "schema_valid": true,
+      "policy_accepted": true,
+      "reproduced": false,
+      "evidence_complete": false,
+      "error": null,
+      "browser": "149.0.7827.55",
+      "assessment": "pass",
+      "attempted_steps": 5,
+      "completed_steps": 5,
+      "artifacts": [
+        {
+          "kind": "screenshot",
+          "sha256": "a9bef54a0e90cd6085bc449d9adc447cfb7c863e8d6ba490d7f30ea1f4ecd2d9"
+        },
+        {
+          "kind": "trace",
+          "sha256": "4c0d008ad9833d0d4684d5409fe1845c3f9b3d0d03e7bbad30397372ef8b0f10"
+        }
+      ],
+      "planner": {
+        "kind": "deterministic_smoke",
+        "model": "none",
+        "prompt_version": "smoke-1",
+        "latency_ms": 0.865,
+        "input_tokens": null,
+        "output_tokens": null,
+        "cost": null,
+        "provider_called": false
+      },
+      "reproduced_oracle_candidate": false,
+      "machine_verified": false,
+      "human_confirmed": false,
+      "latency_seconds": 3.568
+    },
+    {
+      "path": "/navigation",
+      "defective": true,
+      "repeat": 0,
+      "schema_valid": true,
+      "policy_accepted": true,
+      "reproduced": true,
+      "evidence_complete": true,
+      "error": null,
+      "browser": "149.0.7827.55",
+      "assessment": "suspected",
+      "attempted_steps": 6,
+      "completed_steps": 6,
+      "artifacts": [
+        {
+          "kind": "screenshot",
+          "sha256": "3ffe07d22fb70b98f8bb35daa654035ddbf5bd3e8d5c0002444817c07399bec5"
+        },
+        {
+          "kind": "trace",
+          "sha256": "4eec5169606f24d96737037d7856f7cdd6e0049a75c50000eed0f8caea8affc0"
+        },
+        {
+          "kind": "screenshot",
+          "sha256": "3ffe07d22fb70b98f8bb35daa654035ddbf5bd3e8d5c0002444817c07399bec5"
+        },
+        {
+          "kind": "trace",
+          "sha256": "e28e2015176c8cb707bbc0dc22ed997e19efc2e3f7b22c6a091593dd78eff9c7"
+        }
+      ],
+      "planner": {
+        "kind": "deterministic_smoke",
+        "model": "none",
+        "prompt_version": "smoke-1",
+        "latency_ms": 0.602,
+        "input_tokens": null,
+        "output_tokens": null,
+        "cost": null,
+        "provider_called": false
+      },
+      "reproduction_attempted": true,
+      "reproduced_oracle_candidate": true,
+      "machine_verified": false,
+      "human_confirmed": false,
+      "latency_seconds": 7.049
+    },
+    {
+      "path": "/cart",
+      "defective": false,
+      "repeat": 0,
+      "schema_valid": true,
+      "policy_accepted": true,
+      "reproduced": false,
+      "evidence_complete": false,
+      "error": null,
+      "browser": "149.0.7827.55",
+      "assessment": "pass",
+      "attempted_steps": 2,
+      "completed_steps": 2,
+      "artifacts": [
+        {
+          "kind": "screenshot",
+          "sha256": "ca6a31cb42a93ca7237683811fa43265d870f86b3fde4f223cde352be132e3c8"
+        },
+        {
+          "kind": "trace",
+          "sha256": "2b8b24ee46cb93b64effd44d142a243a8dc22895dcf365d9372c9afddd18535f"
+        }
+      ],
+      "planner": {
+        "kind": "deterministic_smoke",
+        "model": "none",
+        "prompt_version": "smoke-1",
+        "latency_ms": 0.642,
+        "input_tokens": null,
+        "output_tokens": null,
+        "cost": null,
+        "provider_called": false
+      },
+      "reproduced_oracle_candidate": false,
+      "machine_verified": false,
+      "human_confirmed": false,
+      "latency_seconds": 3.68
+    },
+    {
+      "path": "/form",
+      "defective": false,
+      "repeat": 0,
+      "schema_valid": true,
+      "policy_accepted": true,
+      "reproduced": false,
+      "evidence_complete": false,
+      "error": null,
+      "browser": "149.0.7827.55",
+      "assessment": "pass",
+      "attempted_steps": 3,
+      "completed_steps": 3,
+      "artifacts": [
+        {
+          "kind": "screenshot",
+          "sha256": "cf1105e9b3233b2ab170444d769c1caedc64eb4a7c0aaf56f513cfaaffb8fcff"
+        },
+        {
+          "kind": "trace",
+          "sha256": "850275d0be182631202053c9243a3dc82e67ce1c27aba94c027deaf47f071c3a"
+        }
+      ],
+      "planner": {
+        "kind": "deterministic_smoke",
+        "model": "none",
+        "prompt_version": "smoke-1",
+        "latency_ms": 0.77,
+        "input_tokens": null,
+        "output_tokens": null,
+        "cost": null,
+        "provider_called": false
+      },
+      "reproduced_oracle_candidate": false,
+      "machine_verified": false,
+      "human_confirmed": false,
+      "latency_seconds": 3.669
+    },
+    {
+      "path": "/login",
+      "defective": true,
+      "repeat": 2,
+      "schema_valid": true,
+      "policy_accepted": true,
+      "reproduced": true,
+      "evidence_complete": true,
+      "error": null,
+      "browser": "149.0.7827.55",
+      "assessment": "suspected",
+      "attempted_steps": 10,
+      "completed_steps": 10,
+      "artifacts": [
+        {
+          "kind": "screenshot",
+          "sha256": "c023204da39f0c1437dd502ffb8b45233273683a08c82fe7e75bbb4dac9aa464"
+        },
+        {
+          "kind": "trace",
+          "sha256": "c258d038f4a3cc13ad3a83315a95a5dee67ba4932c5dfd970d3cc26acbe9dd4f"
+        },
+        {
+          "kind": "screenshot",
+          "sha256": "c023204da39f0c1437dd502ffb8b45233273683a08c82fe7e75bbb4dac9aa464"
+        },
+        {
+          "kind": "trace",
+          "sha256": "2c60050bc62cbf4a05b74e7576e9f471a3cfd262b819dccf8349741ff91a7143"
+        }
+      ],
+      "planner": {
+        "kind": "deterministic_smoke",
+        "model": "none",
+        "prompt_version": "smoke-1",
+        "latency_ms": 0.683,
+        "input_tokens": null,
+        "output_tokens": null,
+        "cost": null,
+        "provider_called": false
+      },
+      "reproduction_attempted": true,
+      "reproduced_oracle_candidate": true,
+      "machine_verified": false,
+      "human_confirmed": false,
+      "latency_seconds": 7.254
+    },
+    {
+      "path": "/login",
+      "defective": false,
+      "repeat": 0,
+      "schema_valid": true,
+      "policy_accepted": true,
+      "reproduced": false,
+      "evidence_complete": false,
+      "error": null,
+      "browser": "149.0.7827.55",
+      "assessment": "pass",
+      "attempted_steps": 5,
+      "completed_steps": 5,
+      "artifacts": [
+        {
+          "kind": "screenshot",
+          "sha256": "a9bef54a0e90cd6085bc449d9adc447cfb7c863e8d6ba490d7f30ea1f4ecd2d9"
+        },
+        {
+          "kind": "trace",
+          "sha256": "b2bc97ec4f977b359a58af48e8393c01531b5c179ee7b139ba9448893b2deee7"
+        }
+      ],
+      "planner": {
+        "kind": "deterministic_smoke",
+        "model": "none",
+        "prompt_version": "smoke-1",
+        "latency_ms": 0.68,
+        "input_tokens": null,
+        "output_tokens": null,
+        "cost": null,
+        "provider_called": false
+      },
+      "reproduced_oracle_candidate": false,
+      "machine_verified": false,
+      "human_confirmed": false,
+      "latency_seconds": 3.879
+    },
+    {
+      "path": "/email",
+      "defective": true,
+      "repeat": 0,
+      "schema_valid": true,
+      "policy_accepted": true,
+      "reproduced": true,
+      "evidence_complete": true,
+      "error": null,
+      "browser": "149.0.7827.55",
+      "assessment": "suspected",
+      "attempted_steps": 8,
+      "completed_steps": 8,
+      "artifacts": [
+        {
+          "kind": "screenshot",
+          "sha256": "5e13ae2564002f3f854218367f4d2ca7976b3e7e61389e26ecb9e22a2a0849df"
+        },
+        {
+          "kind": "trace",
+          "sha256": "a7c09b54bcab67cdbcf6cf4c70d590432456f6488a7aa7ca88822eeb7f9f4f9a"
+        },
+        {
+          "kind": "screenshot",
+          "sha256": "5e13ae2564002f3f854218367f4d2ca7976b3e7e61389e26ecb9e22a2a0849df"
+        },
+        {
+          "kind": "trace",
+          "sha256": "306c566e536b0a273b3c58de188bc046de68118e2c8e83276b45e90961e8d4af"
+        }
+      ],
+      "planner": {
+        "kind": "deterministic_smoke",
+        "model": "none",
+        "prompt_version": "smoke-1",
+        "latency_ms": 0.63,
+        "input_tokens": null,
+        "output_tokens": null,
+        "cost": null,
+        "provider_called": false
+      },
+      "reproduction_attempted": true,
+      "reproduced_oracle_candidate": true,
+      "machine_verified": false,
+      "human_confirmed": false,
+      "latency_seconds": 7.159
+    },
+    {
+      "path": "/email",
+      "defective": false,
+      "repeat": 1,
+      "schema_valid": true,
+      "policy_accepted": true,
+      "reproduced": false,
+      "evidence_complete": false,
+      "error": null,
+      "browser": "149.0.7827.55",
+      "assessment": "pass",
+      "attempted_steps": 4,
+      "completed_steps": 4,
+      "artifacts": [
+        {
+          "kind": "screenshot",
+          "sha256": "99afe20b6e6ae10c2816675671c3a011bd535c533eea6683d2053df089c0e891"
+        },
+        {
+          "kind": "trace",
+          "sha256": "e509cdbcc7aeccb0666693066d62a143be83300cfc3dcbddcab438988f7ff8b3"
+        }
+      ],
+      "planner": {
+        "kind": "deterministic_smoke",
+        "model": "none",
+        "prompt_version": "smoke-1",
+        "latency_ms": 0.891,
+        "input_tokens": null,
+        "output_tokens": null,
+        "cost": null,
+        "provider_called": false
+      },
+      "reproduced_oracle_candidate": false,
+      "machine_verified": false,
+      "human_confirmed": false,
+      "latency_seconds": 3.578
+    },
+    {
+      "path": "/login",
+      "defective": false,
+      "repeat": 2,
+      "schema_valid": true,
+      "policy_accepted": true,
+      "reproduced": false,
+      "evidence_complete": false,
+      "error": null,
+      "browser": "149.0.7827.55",
+      "assessment": "pass",
+      "attempted_steps": 5,
+      "completed_steps": 5,
+      "artifacts": [
+        {
+          "kind": "screenshot",
+          "sha256": "a9bef54a0e90cd6085bc449d9adc447cfb7c863e8d6ba490d7f30ea1f4ecd2d9"
+        },
+        {
+          "kind": "trace",
+          "sha256": "1ae1b88309865ed20737189074ebcc797ebcfde6e5571e800e45a93ebce5cfb0"
+        }
+      ],
+      "planner": {
+        "kind": "deterministic_smoke",
+        "model": "none",
+        "prompt_version": "smoke-1",
+        "latency_ms": 0.66,
+        "input_tokens": null,
+        "output_tokens": null,
+        "cost": null,
+        "provider_called": false
+      },
+      "reproduced_oracle_candidate": false,
+      "machine_verified": false,
+      "human_confirmed": false,
+      "latency_seconds": 3.773
+    },
+    {
+      "path": "/email",
+      "defective": true,
+      "repeat": 1,
+      "schema_valid": true,
+      "policy_accepted": true,
+      "reproduced": true,
+      "evidence_complete": true,
+      "error": null,
+      "browser": "149.0.7827.55",
+      "assessment": "suspected",
+      "attempted_steps": 8,
+      "completed_steps": 8,
+      "artifacts": [
+        {
+          "kind": "screenshot",
+          "sha256": "5e13ae2564002f3f854218367f4d2ca7976b3e7e61389e26ecb9e22a2a0849df"
+        },
+        {
+          "kind": "trace",
+          "sha256": "e73bccaa1d1bc8c3cfb842ebb5acb9b63549d9e4bfc5430ee8eeb4f510e178a5"
+        },
+        {
+          "kind": "screenshot",
+          "sha256": "5e13ae2564002f3f854218367f4d2ca7976b3e7e61389e26ecb9e22a2a0849df"
+        },
+        {
+          "kind": "trace",
+          "sha256": "a45278f030e75a28305123bccaf1a28a1c9c3754d80a8d7f4d2115a2dff48ce6"
+        }
+      ],
+      "planner": {
+        "kind": "deterministic_smoke",
+        "model": "none",
+        "prompt_version": "smoke-1",
+        "latency_ms": 0.724,
+        "input_tokens": null,
+        "output_tokens": null,
+        "cost": null,
+        "provider_called": false
+      },
+      "reproduction_attempted": true,
+      "reproduced_oracle_candidate": true,
+      "machine_verified": false,
+      "human_confirmed": false,
+      "latency_seconds": 7.253
+    }
+  ],
+  "exclusions": [],
+  "counters": {
+    "trials": 30,
+    "schema_valid": 30,
+    "policy_accepted": 30,
+    "execution_errors": 0,
+    "attempted_steps": 153,
+    "completed_steps": 153,
+    "unique_seeded_defects": 5,
+    "unique_reproduced_candidates": 5,
+    "unique_true_candidates": 5,
+    "candidate_recall": {
+      "numerator": 5,
+      "denominator": 5
+    },
+    "candidate_precision": {
+      "numerator": 5,
+      "denominator": 5
+    },
+    "false_positive_control_trials": 0,
+    "control_trials": 15,
+    "reproduction_attempts": 15,
+    "reproductions": 15,
+    "evidence_complete_candidates": 15,
+    "machine_verified": 0,
+    "human_confirmed": 0,
+    "machine_precision": null,
+    "machine_recall": {
+      "numerator": 0,
+      "denominator": 5
+    },
+    "human_precision": null,
+    "live_provider_calls": 0,
+    "tokens": null,
+    "cost": null,
+    "median_latency_seconds": 5.318
+  },
+  "finished_at": 1794142648.2759156
+}

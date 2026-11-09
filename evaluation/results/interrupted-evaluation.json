@@ -1,0 +1,11 @@
+{
+  "recorded_after_failure": true,
+  "recorded_at": 1794144025.8975294,
+  "backend_commit": "870406e",
+  "stage": "independent_reference_checks",
+  "error": "ProcessLookupError",
+  "location": "testpilot.isolation.process_usage while reading /proc/<pid>/status",
+  "completed_reference_checks": null,
+  "completed_trials": 0,
+  "note": "The attempt aborted before trial output. Partial reference counts were not persisted and cannot be reconstructed. The initial completed baseline is preserved separately."
+}

@@ -1,6 +1,6 @@
 # Database and evidence model v0.2
 
-Accepted 2026-11-08. Logical migration baseline; no SQL migration/application model has been implemented. PostgreSQL is authoritative. Redis transports fixed job IDs and never determines findings or authorization. Primary entities have UUID `id`; ManifestArtifact uses the explicitly specified composite primary key. Timestamps are UTC `timestamptz`. Mutable rows have integer `version` for compare-and-swap. Fields marked nullable are the only optional relations specified below. [ADR-007](../adr/007-durable-jobs.md), [ADR-008](../adr/008-verification-review.md), [ADR-010](../adr/010-evidence-evaluation.md).
+Accepted 2026-11-08. Intended full PostgreSQL migration baseline. A restricted SQLite subset and reversible initial migration are implemented; see [current status](../implementation-status.md) and [ADR-012](../decisions/012-offline-fixture-development.md). The full logical model below is not a completion claim. PostgreSQL is authoritative. Redis transports fixed job IDs and never determines findings or authorization. Primary entities have UUID `id`; ManifestArtifact uses the explicitly specified composite primary key. Timestamps are UTC `timestamptz`. Mutable rows have integer `version` for compare-and-swap. Fields marked nullable are the only optional relations specified below. [ADR-007](../adr/007-durable-jobs.md), [ADR-008](../adr/008-verification-review.md), [ADR-010](../adr/010-evidence-evaluation.md).
 
 ## Entities and constraints
 

@@ -53,5 +53,6 @@ Identify contradictions rather than inventing requirements.
 6. Report completed work and unresolved issues.
 
 ## Current Milestone
-Day 1: Repository architecture and infrastructure setup.
+Restricted offline fixture vertical slice implemented; hardened MVP release remains pending.
+Read docs/implementation-status.md and docs/progress.md before continuing.
 

@@ -1,5 +1,7 @@
 # Implementation readiness — v0.2
 
+> Historical pre-implementation snapshot. See [current implementation status](implementation-status.md) and [progress](progress.md) for subsequent coding and executed tests. The full hardened release gates below are not all complete.
+
 Date: 2026-11-08. Design contradictions are resolved as below. No application implementation, dependency installation, system configuration or browser/security/evaluation run was performed in this documentation change. “Selected” is not “verified working.”
 
 ## Resolved decisions

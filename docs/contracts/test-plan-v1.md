@@ -1,6 +1,6 @@
 # Canonical test-plan contract 1.0.0
 
-Accepted 2026-11-08. [ADR-006](../adr/006-canonical-contracts.md). This is a documentation-only Pydantic v2 model specification. It is not application code or an executor. The companion [JSON Schema](test-plan-v1.schema.json) is generated from the following model; never maintain competing D07/D08 formats.
+Accepted 2026-11-08. [ADR-006](../adr/006-canonical-contracts.md). The production Pydantic implementation is `backend/src/testpilot/contracts.py`; the model below documents its normative shape. `scripts/export_contracts.py` generates schema exports and the unit suite checks drift. See current implementation status for executor coverage. The companion [JSON Schema](test-plan-v1.schema.json) is generated from the following model; never maintain competing D07/D08 formats.
 
 ## Normative model
 
@@ -121,7 +121,7 @@ class TestPlan(StrictModel):
 6. Locators are exact role+accessible name or exact visible text with one match; fill permits only approved editable textbox/combobox targets. Zero/multiple matches on action resolution are test_error. A valid oracle's missing expected visible target is an assertion failure only after fixture availability and the oracle context are established; it is not silently classified as a locator error. Distinguish this from an action locator failure.
 7. The strict model is not itself authorization. Trusted code revalidates, canonicalizes and hashes serialized plan bytes, then seals those bytes with the immutable policy snapshot into a run-scoped execution command. `frozen=True` prevents field reassignment, not deep mutation of Python lists; never share mutable model instances across the trust boundary.
 
-Generate the companion schema with `TestPlan.model_json_schema(mode="validation")`. JSON Schema is a documentation artifact until generation/drift checks are wired into application CI. Pin the Pydantic dependency when implementing; changing its generated schema requires review. Every wire-format change gets a new explicit schema_version and retained reader definition; HTTP API/prompt/model/policy versions are independent. Provider structured-output compatibility is a separate pre-live-call gate; adapters may transform provider constraints, but cannot relax canonical validation.
+Generate the companion schema with `TestPlan.model_json_schema(mode="validation")`. JSON Schema is now exported from the production model and checked by the local unit suite; no hosted CI workflow is claimed. Pin the Pydantic dependency when implementing; changing its generated schema requires review. Every wire-format change gets a new explicit schema_version and retained reader definition; HTTP API/prompt/model/policy versions are independent. Provider structured-output compatibility is a separate pre-live-call gate; adapters may transform provider constraints, but cannot relax canonical validation.
 
 Use Pydantic's documented [strict mode](https://docs.pydantic.dev/latest/concepts/strict_mode/), [discriminated unions](https://docs.pydantic.dev/latest/concepts/unions/), [configuration](https://docs.pydantic.dev/latest/api/config/) and [JSON Schema generation](https://docs.pydantic.dev/latest/concepts/json_schema/). These library features support structural validation; the independent safety policy remains mandatory.
 

@@ -1,0 +1,19 @@
+{
+  "name": "testpilot-workspace",
+  "private": true,
+  "packageManager": "pnpm@12.10.1",
+  "scripts": {
+    "dev": "pnpm --filter @testpilot/web dev",
+    "build": "pnpm --filter @testpilot/web build",
+    "typecheck": "pnpm --filter @testpilot/web typecheck",
+    "lint": "pnpm --filter @testpilot/web lint",
+    "test": "pnpm --filter @testpilot/web test",
+    "contracts": "openapi-typescript packages/contracts/openapi.json -o packages/contracts/api.d.ts",
+    "format": "prettier --write apps/web",
+    "format:check": "prettier --check apps/web"
+  },
+  "devDependencies": {
+    "openapi-typescript": "7.13.0",
+    "prettier": "3.9.10"
+  }
+}

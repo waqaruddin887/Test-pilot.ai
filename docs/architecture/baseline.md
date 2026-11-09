@@ -1,5 +1,6 @@
 # Technical baseline v0.2
 
+> Current local implementation uses the narrower [offline fixture development mode](../decisions/012-offline-fixture-development.md). See [implemented/tested/partial/planned status](../implementation-status.md); the full architecture and release gates below remain the intended hardened target.
 Decision date: 2026-11-08. Accepted engineering design under the requested contradiction-resolution work; not a signed charter, deployed control, or completed implementation. [Readiness](../implementation-readiness.md) records unfulfilled gates.
 
 ## Product and scope

@@ -1,5 +1,6 @@
 # TestPilot AI documentation
 
+**Current coding status:** [implemented/tested/partial/planned](implementation-status.md), [security limits](security-status.md), [actual evaluation](evaluation-results.md), and [offline development ADR-012](decisions/012-offline-fixture-development.md). Earlier documentation-only status statements are historical.
 Technical baseline v0.2, selected 2026-11-08 under the architecture-resolution task. Application implementation is not included. Accepted ADRs are engineering decisions, not commercial signatures, compliance certification, installed controls or test results.
 
 ## Reading order and authority

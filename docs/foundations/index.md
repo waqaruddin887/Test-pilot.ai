@@ -1,6 +1,6 @@
 # TestPilot AI — Product & Engineering Hub
 
-**Stage:** Accepted technical baseline v0.2, 8 November 2026; application implementation and evaluation pending. No signed commercial charter, legal certification or completed control is implied.
+**Stage:** Accepted technical baseline v0.2, 8 November 2026; restricted offline fixture implementation/evaluation now exist. See [current status](../implementation-status.md); full hardened integration remains pending. No signed commercial charter, legal certification or completed control is implied.
 
 **Goal:** Local-first AI-assisted web testing: authorized synthetic fixture discovery, finite structured planning, deterministic execution, independent oracle verification, clean reproduction, evidence and human review. Audience remains a solo developer building an honest engineering portfolio; Alignerr selection, eligibility and ownership conditions are not established.
 

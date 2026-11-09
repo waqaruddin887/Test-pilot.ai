@@ -1,6 +1,6 @@
 # 05 — Data Strategy & Sourcing Plan
 
-**Technical baseline v0.2 — 8 November 2026. Design selected; implementation and test evidence pending. Commercial charter/legal approval is not implied.**
+**Technical baseline v0.2 — 8 November 2026. Design selected. See [current implementation and test evidence](../implementation-status.md); the full hardened design is not yet complete. Commercial charter/legal approval is not implied.**
 
 ## Approved initial sources
 

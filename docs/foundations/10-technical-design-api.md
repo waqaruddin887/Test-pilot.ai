@@ -1,10 +1,10 @@
 # 10 — Technical Design Document & API Contracts
 
-**Technical baseline v0.2 — 8 November 2026. Design selected; implementation and test evidence pending. Commercial charter/legal approval is not implied.**
+**Technical baseline v0.2 — 8 November 2026. Design selected. See [current implementation and test evidence](../implementation-status.md); the full hardened design is not yet complete. Commercial charter/legal approval is not implied.**
 
 ## Primary entities
 
-The [final logical database model](../architecture/data-model.md) defines Operator/Session, Project, versioned Authorization/Paths/Operations, Oracle/OracleVersion, Run/Case/PlanStep, ExecutionJob/ExecutionSlot/WorkerCapability/JobCommand/Attempt/StepResult, Finding, Artifact/Manifest, Review, RunEvent, OutboxEvent, IdempotencyRecord and budget/provider usage. Separate step definitions from attempt outcomes and human decisions from machine assessment. Use UUIDs, UTC timestamps, relational ownership constraints, explicit state transitions and indexes. No SQL migration is implemented.
+The [final logical database model](../architecture/data-model.md) defines Operator/Session, Project, versioned Authorization/Paths/Operations, Oracle/OracleVersion, Run/Case/PlanStep, ExecutionJob/ExecutionSlot/WorkerCapability/JobCommand/Attempt/StepResult, Finding, Artifact/Manifest, Review, RunEvent, OutboxEvent, IdempotencyRecord and budget/provider usage. Separate step definitions from attempt outcomes and human decisions from machine assessment. Use UUIDs, UTC timestamps, relational ownership constraints, explicit state transitions and indexes. A restricted SQLite initial migration is implemented/tested; the full PostgreSQL schema remains pending (see current implementation status).
 
 ## State machine
 
