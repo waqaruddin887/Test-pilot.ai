@@ -47,3 +47,10 @@
 - Frontend production build (webpack), strict TypeScript, ESLint, Prettier and status test passed. Modularized dashboard E2E passed with actual API/worker execution and desktop/mobile/evidence screenshots; inspected rendered screenshots, including both failed-assertion previews. All E2E-owned services stopped afterward.
 - Full hardened MVP is not declared complete: PostgreSQL/Redis/RQ/outbox/distributed fencing, live provider adapter/spending policy, cgroup hard limits/complete networked-target isolation matrix, independent human oracle review and public-deployment assessment are unfinished. No push, publication, deployment, sudo/system package installation or global security change occurred.
 - Next reviewer action: follow README, start scripts/dev.sh, inspect the synthetic good/seeded runs and independently review an oracle if desired. Next engineering milestone: provision and verify intended Postgres/RQ/supervisor infrastructure while preserving this closed fixture mode.
+
+## 2026-11-09 — Resumed closeout after interruption
+
+- Verified that both pending commits completed before interruption: 17e1b31 (atomic cancellation fencing) and c9b241e (dashboard/setup/measured delivery). The working tree was clean on resume.
+- Exercised the actual documented `scripts/dev.sh`: migration/seed succeeded, isolated worker and Next.js dashboard became ready, and SIGTERM cleanup stopped both loopback ports. Private `.env` was created by the documented helper, is Git-ignored and has mode 0600; no credential values were printed or committed.
+- Next dev generated apps/web/AGENTS.md and changed next-env.d.ts. Read its scoped framework guidance and the installed Next.js TypeScript/CLI documentation. Preserved generated framework instructions, excluded the managed type file from Git, and changed typecheck to `next typegen && tsc --noEmit` so clean checkouts generate required types independently.
+- Updated typecheck, ESLint, Prettier check and shell syntax verification passed. Backend source and measured fixture pipeline are unchanged by this closeout.

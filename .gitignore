@@ -11,3 +11,6 @@ node_modules/
 .runtime/
 playwright-report/
 test-results/
+
+# Managed by Next.js; dev/build regenerate different route references.
+apps/web/next-env.d.ts
