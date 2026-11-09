@@ -3,9 +3,10 @@ import json
 import time
 from pathlib import Path
 
-from sqlalchemy import select
+from sqlalchemy import case as sql_case
+from sqlalchemy import select, update
 
-from testpilot.db import Artifact, Finding, Review, Run, RunEvent
+from testpilot.db import Artifact, Finding, Job, Review, Run, RunEvent
 
 TERMINAL = frozenset({"completed", "failed", "cancelled"})
 NEXT = {
@@ -35,6 +36,49 @@ def transition(session, run: Run, state: str):
         run.ended_at = time.time()
         run.active_slot = None
     session.add(RunEvent(run_id=run.id, state=state))
+
+
+def atomic_transition(session, run_id: str, expected: str, state: str, started_at=None) -> bool:
+    """SQL compare-and-swap: a committed cancellation or terminal state wins."""
+    if expected in TERMINAL or (
+        state not in {"failed", "cancelled"} and NEXT.get(expected) != state
+    ):
+        raise ValueError("invalid state transition")
+    statement = update(Run).where(Run.id == run_id, Run.state == expected)
+    if state != "cancelled":
+        statement = statement.where(Run.cancel_requested.is_(False))
+    values = {"state": state}
+    if state in TERMINAL:
+        values.update(ended_at=time.time(), active_slot=None)
+    if started_at is not None:
+        values["started_at"] = started_at
+    result = session.execute(
+        statement.values(**values).execution_options(synchronize_session=False)
+    )
+    if result.rowcount != 1:
+        return False
+    session.add(RunEvent(run_id=run_id, state=state))
+    return True
+
+
+def request_cancellation(session, run_id: str) -> bool:
+    statement = (
+        update(Run)
+        .where(Run.id == run_id, Run.state.not_in(TERMINAL))
+        .values(
+            cancel_requested=True,
+            state=sql_case((Run.state == "queued", "cancelled"), else_=Run.state),
+            ended_at=sql_case((Run.state == "queued", time.time()), else_=Run.ended_at),
+            active_slot=sql_case((Run.state == "queued", None), else_=Run.active_slot),
+        )
+        .execution_options(synchronize_session=False)
+    )
+    changed = session.execute(statement).rowcount == 1
+    session.expire_all()
+    if changed and session.get(Run, run_id).state == "cancelled":
+        session.execute(update(Job).where(Job.run_id == run_id).values(state="cancelled"))
+        session.add(RunEvent(run_id=run_id, state="cancelled"))
+    return changed
 
 
 def evidence_available(session, finding: Finding, data_dir: Path) -> bool:

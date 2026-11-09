@@ -27,7 +27,7 @@ from testpilot.db import (
     database,
     uid,
 )
-from testpilot.domain import TERMINAL, digest, evidence_available, transition
+from testpilot.domain import TERMINAL, atomic_transition, digest, evidence_available, transition
 from testpilot.fixtures import SOURCE_HASH
 from testpilot.isolation import invoke
 from testpilot.planner import plan_fixture
@@ -78,7 +78,8 @@ async def execute_run(sessions, data_dir: Path, run_id: str):
             run = db.get(Run, run_id)
             if cancelled():
                 raise asyncio.CancelledError()
-            transition(db, run, state)
+            if not atomic_transition(db, run.id, run.state, state):
+                raise asyncio.CancelledError()
 
     with sessions.begin() as db:
         run = db.get(Run, run_id)
@@ -86,16 +87,18 @@ async def execute_run(sessions, data_dir: Path, run_id: str):
             return
         job = db.scalar(select(Job).where(Job.run_id == run_id))
         if run.cancel_requested:
-            transition(db, run, "cancelled")
+            atomic_transition(db, run.id, "queued", "cancelled")
             job.state = "cancelled"
             return
         if run.created_at < time.time() - 120:
-            transition(db, run, "failed")
+            if not atomic_transition(db, run.id, "queued", "failed"):
+                return
             run.reason = "queue_timeout"
             job.state = "failed"
             return
-        run.started_at = time.time()
-        transition(db, run, "discovering")
+        started_at = time.time()
+        if not atomic_transition(db, run.id, "queued", "discovering", started_at=started_at):
+            return
         job.state = "claimed"
         db.get(Slot, 1).active_run = run.id
         frozen = {
@@ -104,7 +107,7 @@ async def execute_run(sessions, data_dir: Path, run_id: str):
             "max_cases": run.max_cases,
             "defective": run.policy["fixture"] == "synthetic-seeded-v1",
         }
-        deadline = run.started_at + 300
+        deadline = started_at + 300
 
     async def call(kind, **extra):
         if cancelled():

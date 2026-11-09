@@ -34,7 +34,13 @@ from testpilot.db import (
     StepResult,
     database,
 )
-from testpilot.domain import TERMINAL, digest, evidence_available, finding_view, transition
+from testpilot.domain import (
+    TERMINAL,
+    digest,
+    evidence_available,
+    finding_view,
+    request_cancellation,
+)
 from testpilot.fixtures import ORACLES, PATHS, SOURCE_HASH
 from testpilot.policy import path_allowed
 from testpilot.responses import (
@@ -305,7 +311,7 @@ def create_app(sessions=None, data_dir=None, ui_origin=None):
             for run in db.scalars(
                 select(Run).where(Run.project_id == auth.project_id, Run.state.not_in(TERMINAL))
             ):
-                run.cancel_requested = True
+                request_cancellation(db, run.id)
             return {"revoked": True}
 
     def admit(body: RunInput, key: str | None, parent_id=None):
@@ -462,12 +468,10 @@ def create_app(sessions=None, data_dir=None, ui_origin=None):
             run = db.get(Run, run_id)
             if not run:
                 raise APIError(404, "not_found", "Run not found.")
-            if run.state in TERMINAL:
+            changed = request_cancellation(db, run_id)
+            db.refresh(run)
+            if not changed:
                 return {"state": run.state, "already_terminal": True}
-            run.cancel_requested = True
-            if run.state == "queued":
-                transition(db, run, "cancelled")
-                db.scalar(select(Job).where(Job.run_id == run.id)).state = "cancelled"
             return {"state": run.state, "cancel_requested": True}
 
     @app.post("/api/runs/{run_id}/rerun", status_code=202)
