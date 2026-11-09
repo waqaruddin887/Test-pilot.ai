@@ -6,7 +6,7 @@ build-backend = "setuptools.build_meta"
 name = "testpilot-ai"
 version = "0.1.0"
 requires-python = ">=3.12,<3.15"
-dependencies = ["fastapi==0.135.2", "pydantic==2.13.4", "sqlalchemy==2.0.48", "alembic==1.18.4", "psycopg[binary]==3.3.3", "playwright==1.61.0", "uvicorn==0.51.0", "httpx==0.28.1"]
+dependencies = ["fastapi==0.135.2", "pydantic==2.13.4", "sqlalchemy==2.0.48", "alembic==1.18.4", "psycopg[binary]==3.3.3", "playwright==1.61.0", "uvicorn==0.51.0", "httpx==0.28.1", "rq==3.0.0", "redis==8.1.0"]
 
 [project.optional-dependencies]
 dev = ["pytest==9.1.1", "ruff==0.15.6"]

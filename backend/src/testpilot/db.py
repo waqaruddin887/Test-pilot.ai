@@ -214,3 +214,18 @@ def database(url: str | None = None):
             connection.execute("PRAGMA journal_mode=WAL")
 
     return engine, sessionmaker(engine, expire_on_commit=False)
+
+
+class OutboxEvent(Base):
+    __tablename__ = "outbox_events"
+    __table_args__ = (
+        CheckConstraint("state IN ('pending','published','suppressed','expired')"),
+        CheckConstraint("generation >= 0 AND failures >= 0"),
+    )
+    id: Mapped[str] = mapped_column(String(36), primary_key=True, default=uid)
+    job_id: Mapped[str] = mapped_column(ForeignKey("jobs.id", ondelete="CASCADE"), unique=True)
+    generation: Mapped[int] = mapped_column(Integer, default=0)
+    state: Mapped[str] = mapped_column(String(20), default="pending", index=True)
+    failures: Mapped[int] = mapped_column(Integer, default=0)
+    next_attempt_at: Mapped[float] = mapped_column(Float, default=0)
+    published_at: Mapped[float | None] = mapped_column(Float)

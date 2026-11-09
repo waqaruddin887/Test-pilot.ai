@@ -20,6 +20,16 @@ Normal SIGINT/SIGTERM invoke cleanup; SIGKILL cannot. Inspect the precise
 `testpilot.purpose=disposable-integration-test` label if a force-killed run requires
 manual cleanup. Never prune unrelated containers or volumes.
 
-A full web/API/Postgres/Redis Compose deployment and Redis/RQ recovery remain
+A full web/API/Postgres/Redis Compose deployment and distributed recovery remain
 unfinished. The network-disabled browser worker is unchanged. Do not treat a
 normal container bridge as browser egress isolation. See ADR-012 and ADR-013.
+
+## Redis transport integration
+
+redis-test-image.json pins the authenticated temporary Redis service used by
+`scripts/check_postgres.py --with-redis`. The suite tests actual Redis restart with
+persistence deliberately disabled and reconstructs queued notifications from the
+outbox. No production Redis durability configuration is implied. Both services
+have configured resource bounds and tmpfs storage; cleanup attempts both even if
+removing the first fails. The browser remains in a separate network-disabled
+namespace. See ADR-014 for the restricted RQ consumer contract.

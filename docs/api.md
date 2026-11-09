@@ -41,8 +41,13 @@ serving with attachment/nosniff/private no-store headers.
 
 Current deliberate differences from the full baseline: UTC epoch seconds rather
 than RFC3339 transport timestamps, latest 100 rows rather than cursor pagination,
-embedded cases/attempts/events in run detail, host-local queue rather than RQ/outbox,
+embedded cases/attempts/events in run detail, single-host delivery rather than distributed supervision,
 no distributed lease/capability protocol, and no live planner usage/budget records.
 Review responses and settings contain some dictionary fields; core project/run/
 finding transport DTOs are generated. These are prototype interfaces, not a claim
 that every normative v0.2 endpoint/entity has shipped.
+
+Run admission now also commits an outbox row transactionally. The same API supports
+explicit local polling or Redis/RQ JSON notification delivery; Redis outages do not
+undo committed runs. Delivery degradation/restoration appear as additional textual
+run events. No endpoint can configure arbitrary queued callbacks or executable code.

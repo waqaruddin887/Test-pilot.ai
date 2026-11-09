@@ -38,3 +38,5 @@ Root AGENTS.md governs engineering behavior. Contracts and subsystem specificati
 The active source location is `docs/foundations/`. Uppercase `Docs/` and duplicate root `Agents.md` are retired; the latter is archived, while root `AGENTS.md` is authoritative. No files were discarded.
 
 - [ADR-013: Real PostgreSQL regression](decisions/013-real-postgresql-regression.md): corrected host capability check and disposable rootless database tests.
+
+- [ADR-014: Transactional RQ notifications](decisions/014-transactional-rq-notifications.md): single-host delivery, fixed JSON consumer and recovery boundaries.

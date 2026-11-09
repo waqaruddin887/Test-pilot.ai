@@ -2,7 +2,7 @@
 
 A local browser-testing prototype for **repository-owned synthetic fixtures**. It discovers a bounded interface outline, produces a strict deterministic test plan, runs Playwright in a network-disabled sandbox, reproduces requirement violations, and presents screenshots, traces and separate human review.
 
-**This is a verified restricted demo, not the completed production MVP.** The implemented initial schema and fixture workflow are now integration-tested on PostgreSQL 17.11. No live LLM, external targets, Redis/RQ integration, distributed queue or production isolation certification is claimed. See [implementation status](docs/implementation-status.md), [security limitations](docs/security-status.md) and [actual evaluation](docs/evaluation-results.md).
+**This is a verified restricted demo, not the completed production MVP.** The implemented initial schema and fixture workflow are now integration-tested on PostgreSQL 17.11. A restricted single-host Redis/RQ notification transport with transactional outbox is also implemented. No live LLM, external targets, distributed queue supervision or production isolation certification is claimed. See [implementation status](docs/implementation-status.md), [security limitations](docs/security-status.md) and [actual evaluation](docs/evaluation-results.md).
 
 ## Prerequisites
 
@@ -77,7 +77,7 @@ pnpm contracts
 - `evaluation/`: frozen development manifest and measured counters, explicitly not held-out or LLM evaluation.
 - `docs/`: preserved foundations, decisions, progress, status, onboarding, demo and limitations.
 
-PostgreSQL remains the intended application store. The implemented SQLAlchemy/psycopg schema, reversible migrations, API/lifecycle and browser/evidence workflow are tested on PostgreSQL 17.11 as well as SQLite; the full normative data model is still unfinished. Redis/RQ, transactional outbox, distributed fencing and the networked fixture supervisor are unfinished. The foreground local queue is limited to one host and one pending/active run; never start multiple workers against the same store from different data directories. Artifacts expire after 24 hours; run metadata after seven days. The worker enforces expiry on retrieval immediately and performs physical cleanup each minute while running. Expired bytes can remain on disk while the worker is stopped. No automatic backups/exports exist.
+PostgreSQL remains the intended application store. The implemented SQLAlchemy/psycopg schema, reversible migrations, API/lifecycle and browser/evidence workflow are tested on PostgreSQL 17.11 as well as SQLite; the full normative data model is still unfinished. Single-host Redis/RQ JSON delivery and transactional outbox are implemented; distributed fencing and the networked fixture supervisor remain unfinished. The foreground local queue is limited to one host and one pending/active run; never start multiple workers against the same store from different data directories. Artifacts expire after 24 hours; run metadata after seven days. The worker enforces expiry on retrieval immediately and performs physical cleanup each minute while running. Expired bytes can remain on disk while the worker is stopped. No automatic backups/exports exist.
 
 Read [Fedora onboarding](docs/onboarding-fedora.md), [ADR-012](docs/decisions/012-offline-fixture-development.md), [demo outline](docs/demo.md) and [append-only progress](docs/progress.md) before expanding scope.
 
@@ -97,3 +97,34 @@ Without TESTPILOT_TEST_DATABASE_URL, PostgreSQL-specific tests are explicitly sk
 and the rest use SQLite. The wrapper runs the full suite with an isolated PostgreSQL
 schema per test. Do not supply a production database to this test-only variable.
 See [ADR-013](docs/decisions/013-real-postgresql-regression.md).
+
+## Optional Redis/RQ notification transport
+
+Migration `0002` adds a transactional outbox and backfills existing queued jobs.
+Install the updated Python lock, then apply `alembic upgrade head` (the startup
+script does this). Local polling stays the default. To use an operator-provisioned
+private Redis service, set these in your private `.env`:
+
+```dotenv
+TESTPILOT_QUEUE_TRANSPORT=redis
+TESTPILOT_REDIS_URL=redis://:YOUR_LOCAL_REDIS_PASSWORD@127.0.0.1:6379/0
+```
+
+Start the same `scripts/dev.sh`; its foreground worker dispatches and consumes
+fixed JSON notifications. **Do not start a generic `rq worker`.** The restricted
+consumer never invokes a function named by queue content. It reconciles lost
+notifications only for DB-queued runs, with the original deadline. Cancelled,
+active and terminal runs are never automatically replayed. Keep exactly one
+foreground worker on one host with one configured data directory. Distributed
+leases/fencing remain unimplemented.
+
+Run real PostgreSQL + Redis failure/restart tests with the pinned test image:
+
+```bash
+podman pull docker.io/library/redis@sha256:2e3eb11462c4e3759e6972678dd051d150ff54b1e60714b3c33b701260172a90
+.venv/bin/python scripts/check_postgres.py --with-redis
+```
+
+This creates only temporary authenticated loopback services with tmpfs data,
+including a real Redis restart test, and cleans up its owned containers. The default
+suite skips external-service checks explicitly. See [ADR-014](docs/decisions/014-transactional-rq-notifications.md).

@@ -1,0 +1,59 @@
+{
+  "date": "2026-11-09",
+  "scope": "Single-host transactional RQ JSON notification delivery; distributed supervision not implemented",
+  "services": {
+    "postgresql": "17.11",
+    "redis": "7.4.12",
+    "rq": "3.0.0",
+    "redis_py": "8.1.0"
+  },
+  "images": {
+    "postgres": "docker.io/library/postgres@sha256:996e9dc583ba9f0265a2c75547a9c95fb22c251e394749cab205a0a00e1856a1",
+    "redis": "docker.io/library/redis@sha256:2e3eb11462c4e3759e6972678dd051d150ff54b1e60714b3c33b701260172a90"
+  },
+  "combined_command": ".venv/bin/python scripts/check_postgres.py --with-redis",
+  "combined_result": {
+    "passed": 90,
+    "skipped": 0,
+    "duration_seconds": 62.2
+  },
+  "default_command": ".venv/bin/python -m pytest -q",
+  "default_result": {
+    "passed": 79,
+    "skipped": 11,
+    "duration_seconds": 42.87,
+    "skip_reason": "Explicit PostgreSQL/Redis service opt-in required"
+  },
+  "temporary_services_removed": true,
+  "checks": [
+    "actual foreground queue worker and browser execution",
+    "actual Redis container restart",
+    "enqueue outage and lost acknowledgment/data recovery",
+    "stale generation and duplicate protection",
+    "queued cancellation and expiry",
+    "rollback on failed outbox insertion",
+    "nonempty migration backfill and reversible upgrades",
+    "hostile function/pickle/compression payload rejection",
+    "cleanup continues when one container removal fails",
+    "authenticated bounded Redis URL configuration"
+  ],
+  "source_sha256": {
+    "backend/src/testpilot/delivery.py": "2700f61c17b075fd0c6ebf7b89ff04682fbaad02916ac7ca2c2060e6ce849704",
+    "backend/src/testpilot/db.py": "6ec6734c30c9347e58ba773dde563a33dd908c5d61d9f1075075fc1a5d6215a6",
+    "backend/src/testpilot/domain.py": "789b2c91f1a8c742f8077a640b52000db72bdbfa8dc989dd311c50be34935981",
+    "backend/src/testpilot/worker.py": "a447de27811f8018244ee4c9700e72f5ebbb095d8e9ce284fe5b1923236742db",
+    "backend/src/testpilot/api.py": "b3964ddd5d833d4e1cff4e18f00c4cbb2166dfe5642efded0f5b45829331b008",
+    "backend/migrations/versions/0002_outbox.py": "f08112644b27eda5100db183e2c44aff1f2148a1bfbe572380ed94688325774d",
+    "tests/integration/test_delivery.py": "0572a5be50840270b986059c61b8c728cc1540f8641a94855d980234e2523186",
+    "tests/integration/test_migrations.py": "5ad64b40d7ad8ce9ccdfa219aed214d012be6987c86677ba076b255c73510b43",
+    "tests/unit/test_infrastructure_cleanup.py": "f02f4ce24a6728d5dc248c178b4664abc829c389d1670c4fba008c65a12e48eb",
+    "scripts/check_postgres.py": "a450badaf5c3a849b4f575691099ac73ef0ff0f54f13ce82fe2110f535ee826f",
+    "requirements.lock": "ad0d7295f8b4f90d102da92c884b1fa388c1fd18daf15c78b11336a35f3576e7"
+  },
+  "limits": [
+    "One worker on one host using one configured data directory",
+    "No generic RQ workers/callback execution",
+    "No distributed leases, signed supervisor capabilities or exactly-once side effect guarantee",
+    "No live LLM provider calls or revised model-quality metric"
+  ]
+}

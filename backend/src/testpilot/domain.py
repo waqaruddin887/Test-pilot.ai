@@ -6,7 +6,7 @@ from pathlib import Path
 from sqlalchemy import case as sql_case
 from sqlalchemy import select, update
 
-from testpilot.db import Artifact, Finding, Job, Review, Run, RunEvent
+from testpilot.db import Artifact, Finding, Job, OutboxEvent, Review, Run, RunEvent
 
 TERMINAL = frozenset({"completed", "failed", "cancelled"})
 NEXT = {
@@ -78,6 +78,11 @@ def request_cancellation(session, run_id: str) -> bool:
     if changed and session.get(Run, run_id).state == "cancelled":
         session.execute(update(Job).where(Job.run_id == run_id).values(state="cancelled"))
         session.add(RunEvent(run_id=run_id, state="cancelled"))
+        session.execute(
+            update(OutboxEvent)
+            .where(OutboxEvent.job_id.in_(select(Job.id).where(Job.run_id == run_id)))
+            .values(state="suppressed")
+        )
     return changed
 
 

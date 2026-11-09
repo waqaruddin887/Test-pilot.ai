@@ -26,6 +26,7 @@ from testpilot.db import (
     Job,
     OperatorSession,
     OracleVersion,
+    OutboxEvent,
     Project,
     Review,
     Run,
@@ -231,7 +232,7 @@ def create_app(sessions=None, data_dir=None, ui_origin=None):
                 "isolation_proof": slot.proof if slot else {},
                 "limitations": [
                     "No external targets or live LLM",
-                    "No Redis/RQ or distributed recovery",
+                    "Single-host queue only; distributed lease/fencing remains pending",
                     "Memory/PID watchdog uses polling; cgroup hard limits and release hardening pending",
                     "Independent human oracle review required for verified findings",
                 ],
@@ -380,7 +381,10 @@ def create_app(sessions=None, data_dir=None, ui_origin=None):
                 )
                 db.add(run)
                 db.flush()
-                db.add(Job(run_id=run.id))
+                job = Job(run_id=run.id)
+                db.add(job)
+                db.flush()
+                db.add(OutboxEvent(job_id=job.id))
                 db.add(RunEvent(run_id=run.id, state="queued"))
                 expiry = time.time() + 604800
                 if existing:

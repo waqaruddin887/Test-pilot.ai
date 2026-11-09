@@ -12,7 +12,8 @@ requirements. The full hardened MVP is **incomplete**.
 | Project authorization | Implemented for built-in fixtures | API rejects arbitrary origins, invalid paths, revoked/expired authorization |
 | Persistence/migrations | Implemented/tested on SQLite | fresh upgrade, rollback, reapply, FK/unique constraints, durable job/run/idempotency |
 | PostgreSQL | Implemented initial schema/runtime integration-tested | PostgreSQL 17.11 in pinned rootless temporary container; migrations, constraints, API/lifecycle and real browser/evidence suite |
-| Redis/RQ/outbox/distributed leases | Planned | no claim of reliable distributed delivery |
+| Redis/RQ/outbox | Implemented for one foreground host | fixed JSON notifications, transactional admission, backfill, outage/lost-ack/restart tests and real browser execution |
+| Distributed leases/fencing | Planned | no claim of distributed delivery/execution safety |
 | Discovery | Implemented/tested, one fixture page | title/path, bounded roles/names/visible text |
 | Planner | Explicit deterministic smoke implemented/tested | 30 valid fixture plans; zero live-provider calls |
 | Hosted provider adapter/quotas | Deferred | provider/model/terms/cost caps unresolved |
@@ -45,7 +46,7 @@ Requirements traceability:
 | FR12 | minimal clean runner inputs and static fake fixture data | no live LLM request/redaction test or generic trace sanitation claim |
 
 Next engineering milestone: retain this demo unchanged while implementing and
-extending the initial PostgreSQL schema and implementing Redis/RQ/outbox/fencing and cgroup-bounded
+extending the initial PostgreSQL schema and implementing distributed fencing/supervisor capabilities and cgroup-bounded
 supervision on an explicitly provisioned host. Independent human oracle review is
 needed for non-provisional verified findings. Live provider work requires explicit
 model/terms/token/monetary-cap decisions before any paid request. External targets
@@ -56,3 +57,8 @@ Final real database run: 68 passed, no skips. Default SQLite run: 64 passed with
 four explicitly skipped PostgreSQL-only checks. Both use the same application
 contracts; PostgreSQL tests additionally exercise real constraints, migration
 schema drift and concurrent admission/claim behavior.
+
+Redis/RQ verification: [2026-11-09 outbox evidence](verification/2026-11-09-rq-outbox.json).
+The final combined PostgreSQL/Redis run passed 90 tests with no skips. The default
+run passed 79, explicitly skipping 11 external-service checks. This verifies only
+the documented single-host restricted consumer, not generic/distributed RQ workers.

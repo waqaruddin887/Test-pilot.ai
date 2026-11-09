@@ -285,6 +285,10 @@ async def serve(once=False):
         if negative["violations_executed"] or len(proof["proof"]["denied_destinations"]) != 5:
             raise RuntimeError("isolation_negative_test_failed")
 
+        transport = os.environ.get("TESTPILOT_QUEUE_TRANSPORT", "local")
+        if transport not in {"local", "redis"}:
+            raise ValueError("Unsupported queue transport")
+
         async def heartbeat():
             last_cleanup = 0
             while True:
@@ -293,21 +297,39 @@ async def serve(once=False):
                     slot.heartbeat, slot.enabled, slot.proof = (
                         time.time(),
                         True,
-                        {**proof, "adversarial": negative},
+                        {**proof, "adversarial": negative, "delivery_transport": transport},
                     )
                 if time.time() - last_cleanup >= 60:
                     cleanup(sessions, directory)
                     last_cleanup = time.time()
                 await asyncio.sleep(2)
 
+        queue = None
+        if transport == "redis":
+            from testpilot.delivery import queue_from_env
+
+            queue = queue_from_env()
         pulse = asyncio.create_task(heartbeat())
         try:
             while True:
-                with sessions() as db:
-                    run = db.scalar(
-                        select(Run).where(Run.state == "queued").order_by(Run.created_at)
-                    )
-                    run_id = run.id if run else None
+                if pulse.done():
+                    await pulse  # A failed heartbeat/cleanup must stop admission and execution.
+                if queue is not None:
+                    from redis.exceptions import RedisError
+
+                    from testpilot.delivery import dispatch, receive
+
+                    try:
+                        await asyncio.to_thread(dispatch, sessions, queue)
+                        run_id = await asyncio.to_thread(receive, sessions, queue)
+                    except RedisError:
+                        run_id = None
+                else:
+                    with sessions() as db:
+                        run = db.scalar(
+                            select(Run).where(Run.state == "queued").order_by(Run.created_at)
+                        )
+                        run_id = run.id if run else None
                 if run_id:
                     await execute_run(sessions, directory, run_id)
                 if once:
