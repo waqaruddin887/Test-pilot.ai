@@ -1,5 +1,25 @@
-Container deployment is deferred. This environment has Podman but cannot initialize
-it (read-only `/run/user/1000/libpod`); Docker/Postgres/Redis executables are absent.
-No unverified compose file is presented as runnable. PostgreSQL + Redis/RQ and the
-networked fixture supervisor remain the intended next deployment stage; do not
-expose the development API or SQLite adapter publicly. See ADR-012.
+# Local infrastructure verification
+
+Rootless Podman works outside Codex's restricted runtime mount. The earlier
+read-only `/run/user/1000/libpod` failure was sandbox-specific, not a host blocker.
+No system configuration changes were necessary.
+
+`postgres-test-image.json` pins the official PostgreSQL 17 image digest actually
+used by `scripts/check_postgres.py`. Pull it explicitly, then run:
+
+```bash
+podman pull docker.io/library/postgres@sha256:996e9dc583ba9f0265a2c75547a9c95fb22c251e394749cab205a0a00e1856a1
+.venv/bin/python scripts/check_postgres.py
+```
+
+The script owns one generated container, binds a random loopback port, uses tmpfs
+instead of a persistent volume, configures memory/CPU/PID limits and read-only root,
+runs real database tests, then removes the container. It does not modify .env or
+connect to an existing application database. Tests get unique disposable schemas.
+Normal SIGINT/SIGTERM invoke cleanup; SIGKILL cannot. Inspect the precise
+`testpilot.purpose=disposable-integration-test` label if a force-killed run requires
+manual cleanup. Never prune unrelated containers or volumes.
+
+A full web/API/Postgres/Redis Compose deployment and Redis/RQ recovery remain
+unfinished. The network-disabled browser worker is unchanged. Do not treat a
+normal container bridge as browser egress isolation. See ADR-012 and ADR-013.

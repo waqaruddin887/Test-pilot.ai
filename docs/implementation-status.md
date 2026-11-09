@@ -1,6 +1,6 @@
 # Current implementation status
 
-Date: 2026-11-08. The supplied v0.2 documentation remains the intended hardened
+Updated: 2026-11-09. The supplied v0.2 documentation remains the intended hardened
 architecture. [ADR-012](decisions/012-offline-fixture-development.md) defines a
 narrower, local offline implementation. This page supersedes **implementation
 status** statements in the earlier documentation-only reviews, not their design
@@ -11,7 +11,7 @@ requirements. The full hardened MVP is **incomplete**.
 | Canonical plan 1.0.0 | Implemented/tested | strict Pydantic, parser/schema drift, negative contract/policy suite |
 | Project authorization | Implemented for built-in fixtures | API rejects arbitrary origins, invalid paths, revoked/expired authorization |
 | Persistence/migrations | Implemented/tested on SQLite | fresh upgrade, rollback, reapply, FK/unique constraints, durable job/run/idempotency |
-| PostgreSQL | Adapter only, unverified | no server integration test performed |
+| PostgreSQL | Implemented initial schema/runtime integration-tested | PostgreSQL 17.11 in pinned rootless temporary container; migrations, constraints, API/lifecycle and real browser/evidence suite |
 | Redis/RQ/outbox/distributed leases | Planned | no claim of reliable distributed delivery |
 | Discovery | Implemented/tested, one fixture page | title/path, bounded roles/names/visible text |
 | Planner | Explicit deterministic smoke implemented/tested | 30 valid fixture plans; zero live-provider calls |
@@ -45,8 +45,14 @@ Requirements traceability:
 | FR12 | minimal clean runner inputs and static fake fixture data | no live LLM request/redaction test or generic trace sanitation claim |
 
 Next engineering milestone: retain this demo unchanged while implementing and
-integration-testing PostgreSQL + Redis/RQ/outbox/fencing and cgroup-bounded
+extending the initial PostgreSQL schema and implementing Redis/RQ/outbox/fencing and cgroup-bounded
 supervision on an explicitly provisioned host. Independent human oracle review is
 needed for non-provisional verified findings. Live provider work requires explicit
 model/terms/token/monetary-cap decisions before any paid request. External targets
 remain outside the MVP.
+
+PostgreSQL verification details: [2026-11-09 evidence](verification/2026-11-09-postgresql.json).
+Final real database run: 68 passed, no skips. Default SQLite run: 64 passed with
+four explicitly skipped PostgreSQL-only checks. Both use the same application
+contracts; PostgreSQL tests additionally exercise real constraints, migration
+schema drift and concurrent admission/claim behavior.

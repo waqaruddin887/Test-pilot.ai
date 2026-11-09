@@ -36,3 +36,5 @@ Root AGENTS.md governs engineering behavior. Contracts and subsystem specificati
 - [Machine-readable change manifest](change-manifest.json): exact moves, additions, modifications and original checksums.
 
 The active source location is `docs/foundations/`. Uppercase `Docs/` and duplicate root `Agents.md` are retired; the latter is archived, while root `AGENTS.md` is authoritative. No files were discarded.
+
+- [ADR-013: Real PostgreSQL regression](decisions/013-real-postgresql-regression.md): corrected host capability check and disposable rootless database tests.

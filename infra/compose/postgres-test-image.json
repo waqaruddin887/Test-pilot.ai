@@ -1,0 +1,5 @@
+{
+  "image": "docker.io/library/postgres@sha256:996e9dc583ba9f0265a2c75547a9c95fb22c251e394749cab205a0a00e1856a1",
+  "selected_major": 17,
+  "purpose": "Disposable rootless PostgreSQL integration tests; no persistent application deployment"
+}

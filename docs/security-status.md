@@ -23,7 +23,6 @@ values. Raw traces/screenshots never enter planner input. New fixtures that add
 cookies/authentication/sensitive data or external requests require review and tests;
 this implementation is not a general sanitizer for hostile authenticated websites.
 
-Provider adapter, pricing/terms, token/spend reservations, actual production
-PostgreSQL/Redis behavior, deployment/container scans and the complete v0.2
+Provider adapter, pricing/terms, token/spend reservations, the full intended PostgreSQL model and Redis/RQ behavior, deployment/container scans and the complete v0.2
 supervisor protocol are deferred. Do not expose the API publicly or expand URL
 scope while any of those release boundaries are unproved.

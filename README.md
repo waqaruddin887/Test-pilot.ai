@@ -2,7 +2,7 @@
 
 A local browser-testing prototype for **repository-owned synthetic fixtures**. It discovers a bounded interface outline, produces a strict deterministic test plan, runs Playwright in a network-disabled sandbox, reproduces requirement violations, and presents screenshots, traces and separate human review.
 
-**This is a verified restricted demo, not the completed production MVP.** No live LLM, external targets, PostgreSQL/Redis integration, distributed queue or production isolation certification is claimed. See [implementation status](docs/implementation-status.md), [security limitations](docs/security-status.md) and [actual evaluation](docs/evaluation-results.md).
+**This is a verified restricted demo, not the completed production MVP.** The implemented initial schema and fixture workflow are now integration-tested on PostgreSQL 17.11. No live LLM, external targets, Redis/RQ integration, distributed queue or production isolation certification is claimed. See [implementation status](docs/implementation-status.md), [security limitations](docs/security-status.md) and [actual evaluation](docs/evaluation-results.md).
 
 ## Prerequisites
 
@@ -77,6 +77,23 @@ pnpm contracts
 - `evaluation/`: frozen development manifest and measured counters, explicitly not held-out or LLM evaluation.
 - `docs/`: preserved foundations, decisions, progress, status, onboarding, demo and limitations.
 
-PostgreSQL remains the intended application store. SQLAlchemy has a psycopg adapter, but only SQLite migration/runtime behavior is tested here. Redis/RQ, transactional outbox, distributed fencing and the networked fixture supervisor are unfinished. The foreground local queue is limited to one host and one pending/active run; never start multiple workers against the same store from different data directories. Artifacts expire after 24 hours; run metadata after seven days. The worker enforces expiry on retrieval immediately and performs physical cleanup each minute while running. Expired bytes can remain on disk while the worker is stopped. No automatic backups/exports exist.
+PostgreSQL remains the intended application store. The implemented SQLAlchemy/psycopg schema, reversible migrations, API/lifecycle and browser/evidence workflow are tested on PostgreSQL 17.11 as well as SQLite; the full normative data model is still unfinished. Redis/RQ, transactional outbox, distributed fencing and the networked fixture supervisor are unfinished. The foreground local queue is limited to one host and one pending/active run; never start multiple workers against the same store from different data directories. Artifacts expire after 24 hours; run metadata after seven days. The worker enforces expiry on retrieval immediately and performs physical cleanup each minute while running. Expired bytes can remain on disk while the worker is stopped. No automatic backups/exports exist.
 
 Read [Fedora onboarding](docs/onboarding-fedora.md), [ADR-012](docs/decisions/012-offline-fixture-development.md), [demo outline](docs/demo.md) and [append-only progress](docs/progress.md) before expanding scope.
+
+## Real PostgreSQL regression
+
+Rootless Podman is available outside Codex’s restricted runtime mount; the earlier
+read-only runtime error was sandbox-specific. No host reconfiguration was needed.
+The pinned test container uses a random loopback port and bounded tmpfs data, with
+no application data/volumes mounted. It is removed after the test run.
+
+```bash
+podman pull docker.io/library/postgres@sha256:996e9dc583ba9f0265a2c75547a9c95fb22c251e394749cab205a0a00e1856a1
+.venv/bin/python scripts/check_postgres.py
+```
+
+Without TESTPILOT_TEST_DATABASE_URL, PostgreSQL-specific tests are explicitly skipped
+and the rest use SQLite. The wrapper runs the full suite with an isolated PostgreSQL
+schema per test. Do not supply a production database to this test-only variable.
+See [ADR-013](docs/decisions/013-real-postgresql-regression.md).

@@ -1,0 +1,35 @@
+{
+  "date": "2026-11-09",
+  "scope": "Implemented initial schema and single-host fixture workflow; not full normative database/queue architecture",
+  "python": "3.14.8",
+  "postgresql": "17.11 (Debian 17.11-1.pgdg13+2)",
+  "image": "docker.io/library/postgres@sha256:996e9dc583ba9f0265a2c75547a9c95fb22c251e394749cab205a0a00e1856a1",
+  "postgres_command": ".venv/bin/python scripts/check_postgres.py",
+  "postgres_result": {
+    "passed": 68,
+    "skipped": 0,
+    "duration_seconds": 41.46
+  },
+  "sqlite_command": ".venv/bin/python -m pytest -q",
+  "sqlite_result": {
+    "passed": 64,
+    "skipped": 4,
+    "duration_seconds": 35.13,
+    "skip_reason": "PostgreSQL-specific checks require an explicit test database URL"
+  },
+  "temporary_container_removed": true,
+  "source_sha256": {
+    "backend/src/testpilot/api.py": "6f2b2526b6215b4b31ced2fc74540f08d67c09d5edf16b4a5aa245909e157900",
+    "backend/src/testpilot/db.py": "34953f2e839c18293c7a23634f967692d720059866ed0d2cfc59a4f28a2dee2a",
+    "tests/conftest.py": "74b6dc24f510f1654ecdabb79c34022d804535760a141147e773674e7f225fdf",
+    "tests/integration/test_postgres.py": "ebe6cf51d188cfe6687e10a5ec0281504a9823e7accc3744419bc716c3010128",
+    "scripts/check_postgres.py": "e03394ed4cf9e91a461a479fb288d70744765389caa5e98a1dc1cd35a4ee59b2",
+    "infra/compose/postgres-test-image.json": "0f859c0286123ea1a3ad27a47124d3806c32f9ae63a45d6c979df20a88a0dd6d"
+  },
+  "limitations": [
+    "No Redis/RQ/outbox or distributed lease implementation",
+    "Only the implemented initial PostgreSQL schema is covered",
+    "No browser network scope expansion",
+    "No production deployment or live provider call"
+  ]
+}

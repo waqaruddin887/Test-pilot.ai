@@ -35,3 +35,10 @@ Acceptance: strict parser/policy negatives; namespace socket denials; browser la
 with sandbox enabled; no secret mounts/environment; control passes and seeded
 violations reproduce; artifact integrity/expiry and review gates; cancellation and
 uncertain-crash handling tests. Unmet criteria are recorded, not waived.
+
+## Infrastructure observation superseded, 2026-11-09
+
+[ADR-013](013-real-postgresql-regression.md) records a successful rootless Podman
+check outside Codex’s restricted runtime mount and real PostgreSQL integration
+tests. The earlier runtime failure above was sandbox-specific. Browser isolation
+and SQLite development fallback decisions remain unchanged.

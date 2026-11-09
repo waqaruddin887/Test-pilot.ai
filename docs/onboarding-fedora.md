@@ -40,3 +40,10 @@ Troubleshooting:
 - Planned mode 503: intentional; live provider and spending policy are unconfigured.
 - Build fails on local IPC: webpack is already the selected supported path. In Codex,
   explicit process/socket permission was still needed for a successful build.
+
+## PostgreSQL follow-up
+
+Rechecking outside Codex’s sandbox proved rootless Podman works without host changes.
+Use the pinned disposable PostgreSQL runner in the root README for real database
+regressions. The older runtime-path failure above is historical; it is not a claim
+that this host cannot run containers. See ADR-013 and current implementation status.

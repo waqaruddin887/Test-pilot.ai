@@ -1,4 +1,4 @@
-"""Portable relational development schema. PostgreSQL adapter is not yet integration-tested."""
+"""Portable initial relational schema; SQLite and PostgreSQL integration-tested."""
 
 import os
 import time

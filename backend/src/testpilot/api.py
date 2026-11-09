@@ -225,7 +225,7 @@ def create_app(sessions=None, data_dir=None, ui_origin=None):
                 "live_llm_available": False,
                 "storage": "SQLite development adapter"
                 if db.bind.dialect.name == "sqlite"
-                else "PostgreSQL adapter (unverified)",
+                else "PostgreSQL (initial schema integration-tested)",
                 "artifact_ttl_hours": 24,
                 "metadata_ttl_days": 7,
                 "isolation_proof": slot.proof if slot else {},
